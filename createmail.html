@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
     <title> إنشاء حساب</title>
     <style>
         body {
@@ -135,13 +135,13 @@
                             d="M20 17.5C20 19.985 20 22 12 22C4 22 4 19.985 4 17.5C4 15.015 7.582 13 12 13C16.418 13 20 15.015 20 17.5Z"
                             fill="#0194FF" />
                     </svg></i>
-                <input type="text" placeholder="اسم المستخدم">
+                <input type="text" placeholder="اسم المستخدم" id="New_account_name">
             </div>
             <div class="input-group">
                 <i><svg xmlns="http://www.w3.org/2000/svg" width="17" height="12" viewBox="0 0 17 12" fill="none">
 <path d="M1.86999 0H15.12C16.37 0 17 0.59 17 1.79V10.21C17 11.4 16.37 12 15.12 12H1.86999C0.61999 12 -0.0100098 11.4 -0.0100098 10.21V1.79C-0.0100098 0.59 0.61999 0 1.86999 0ZM8.48999 8.6L15.23 3.07C15.47 2.87 15.66 2.41 15.36 2C15.07 1.59 14.54 1.58 14.19 1.83L8.48999 5.69L2.79999 1.83C2.44999 1.58 1.91999 1.59 1.62999 2C1.32999 2.41 1.51999 2.87 1.75999 3.07L8.48999 8.6Z" fill="#0194FF"/>
 </svg></i>
-                <input type="email" placeholder="البريد الالكتروني">
+                <input type="email" placeholder="البريد الالكتروني" id="New_account_email">
             </div>
             <div class="input-group">
                 <i><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -149,9 +149,9 @@
                             d="M5.25 10.055V8C5.25 6.20979 5.96116 4.4929 7.22703 3.22703C8.4929 1.96116 10.2098 1.25 12 1.25C13.7902 1.25 15.5071 1.96116 16.773 3.22703C18.0388 4.4929 18.75 6.20979 18.75 8V10.055C19.865 10.138 20.59 10.348 21.121 10.879C22 11.757 22 13.172 22 16C22 18.828 22 20.243 21.121 21.121C20.243 22 18.828 22 16 22H8C5.172 22 3.757 22 2.879 21.121C2 20.243 2 18.828 2 16C2 13.172 2 11.757 2.879 10.879C3.409 10.348 4.135 10.138 5.25 10.055ZM6.75 8C6.75 6.60761 7.30312 5.27225 8.28769 4.28769C9.27225 3.30312 10.6076 2.75 12 2.75C13.3924 2.75 14.7277 3.30312 15.7123 4.28769C16.6969 5.27225 17.25 6.60761 17.25 8V10.004C16.8673 10.0007 16.4507 9.99933 16 10H8C7.54867 9.99933 7.132 10.0007 6.75 10.004V8Z"
                             fill="#0194FF" />
                     </svg></i>
-                <input type="password" placeholder="كلمة المرور">
+                <input type="password" placeholder="كلمة المرور" id="New_account_password">
             </div>
-            <button class="login-btn"> إنشاء حساب</button>
+            <button class="login-btn" id="create_New_account"> إنشاء حساب</button>
             <div class="register-link">
                 أليس لديك حساب؟ <a href="login.html">التسجيل</a>
             </div>
@@ -164,6 +164,7 @@
             <p> إدارة سهلة لمخزون الأدوية </p>
         </div>
     </div>
+<script src="./main.js"></script>
 
 </body>
 

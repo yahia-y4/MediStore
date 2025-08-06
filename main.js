@@ -9,22 +9,49 @@ let AllItems_arry = [];
 
 class Events {
   constructor() {
+    this.set_event()
     //  this.getAllSupplierEvent()
     // this.getOneSupplierEvent(7)
     // this.balanceStatusSupplierEvent(7)
     // this.addNewItemEvent();
     // this.updateItemEvent()
+    // this.getAllItemsEvent()
   }
-  async set_event() {}
+  async set_event() {
+
+    // ----------/ عند الضغط على انشاء الحساب/---------------
+    const create_New_account = document.getElementById("create_New_account")
+    if(create_New_account){
+      create_New_account.onclick =()=>{
+        this.addUserEvent()
+      }
+    }
+    //---------------------------------------------------------//
+
+
+
+    // -------------/عند الضغط على تسجيل الدخول/---------------
+    const login = document.getElementById("login_but")
+    if(login){
+      login.onclick=()=>{
+        this.loginEvent()
+      }
+    }
+    //---------------------------------------------------------//
+
+
+
+
+  }
 
 
 
   // -------- / احداث المصادقة /------------
   async addUserEvent() {
-    const name = "";
-    const email = "";
-    const password = "";
-    const password_confirmation = "";
+    const name = document.getElementById("New_account_name").value;
+    const email = document.getElementById("New_account_email").value;
+    const password = document.getElementById("New_account_password").value;
+    const password_confirmation = document.getElementById("New_account_password").value;
 
     if (!name || !email || !password || !password_confirmation) {
       console.log("نقص في معلومات المستخدم");
@@ -34,16 +61,24 @@ class Events {
       console.log("خطا في كلمة المرور");
       return;
     }
-    await Api.register(name, email, password, password_confirmation);
+   const data = await Api.register(name, email, password, password_confirmation);
+   console.log(data)
+   if (data.message == 'User registered successfully'){
+    window.location.href = "index.html";
+   }
   }
   async loginEvent() {
-    const email = "";
-    const password = "";
+    const email = document.getElementById("login_email").value;
+    const password = document.getElementById("login_password").value;
     if (!email || !password) {
       console.log("نقص في معلومات التسجيل");
       return;
     }
-    await Api.login();
+   const data = await Api.login(email,password);
+ 
+   if(data.message== "Login successful"){
+     window.location.href = "index.html";
+   }
   }
   async logoutEvent() {
     await Api.logout();
@@ -160,6 +195,12 @@ class Events {
       console.log(data)
 
    }
+   async getAllItemsEvent(){
+    await Api.getAllItems()
+    console.log(AllItems_arry)
+   }
+
+
   //-------------------------------------//
 }
 class API {
@@ -721,7 +762,7 @@ class API {
         return data;
       }
       console.log(data);
-      return data;
+      AllItems_arry = data.data
     } catch (e) {
       console.log(e);
     }
