@@ -1,42 +1,166 @@
+// ---/المتغيرات/---
+
+let AllSupplier_arry = [];
+let SelectedSupplier_op = {};
+let balanceStatusSupplier_op = {};
+let AllItems_arry = [];
+
+//------------------//
+
 class Events {
   constructor() {
-    this.set_event();
+    //  this.getAllSupplierEvent()
+    // this.getOneSupplierEvent(7)
+    // this.balanceStatusSupplierEvent(7)
+    // this.addNewItemEvent();
+    // this.updateItemEvent()
   }
-  set_event() {
-    document.getElementById("storage").onclick = () => {
-      document.getElementById("storage_page").style.display = "block";
-      document.getElementById("Control_panel_page").style.display = "none";
-    };
+  async set_event() {}
 
-    document.getElementById("Control_panel").onclick = () => {
-      document.getElementById("storage_page").style.display = "none";
-      document.getElementById("Control_panel_page").style.display = "block";
-    };
 
-    // document.getElementById('conrol-2').onclick =()=>{
-    //     document.getElementById('storage_page').style.display="block"
-    //     document.getElementById('buy_fatora_box').style.display="none"
-    //     Storage_M_C.cancel_buy_fatora()
-    // }
 
-    document.getElementById("add_new_buy_fatora_button").onclick = () => {
-      document.getElementById("buy_fatora_box").style.display = "block";
-      document.getElementById("storage_page").style.display = "none";
-      Storage_M_C.start_buy_fatora();
-    };
+  // -------- / احداث المصادقة /------------
+  async addUserEvent() {
+    const name = "";
+    const email = "";
+    const password = "";
+    const password_confirmation = "";
 
-    document.getElementById("add_item_in_buy_fatora_button").onclick = () => {};
-
-    document.getElementById("add_buy_fatora_button").onclick = () => {};
-    document.getElementById("cancel_buy_fatora_button").onclick = () => {
-      document.getElementById("storage_page").style.display = "block";
-    };
-    document.getElementById("morid_name").onclick = () => {
-      document.getElementById("morid").style.display = "flex";
-    };
-
-    document.getElementById("morid_name").oninput = () => {};
+    if (!name || !email || !password || !password_confirmation) {
+      console.log("نقص في معلومات المستخدم");
+      return;
+    }
+    if (password !== password_confirmation) {
+      console.log("خطا في كلمة المرور");
+      return;
+    }
+    await Api.register(name, email, password, password_confirmation);
   }
+  async loginEvent() {
+    const email = "";
+    const password = "";
+    if (!email || !password) {
+      console.log("نقص في معلومات التسجيل");
+      return;
+    }
+    await Api.login();
+  }
+  async logoutEvent() {
+    await Api.logout();
+  }
+  // -----------------------------------------//
+
+
+
+
+
+
+  // -------- / احداث الموردين /------------
+  async addNewSupplierEvent() {
+    const name = "";
+    const contact_details = "";
+    if (!name || !contact_details) {
+      console.log("نقص في بيانات المورد");
+      return;
+    }
+    await Api.addNewSupplier(name, contact_details);
+  }
+  async getAllSupplierEvent() {
+    await Api.getAllSupplier();
+    console.log(AllSupplier_arry);
+  }
+  async getOneSupplierEvent(id) {
+    await Api.getOneSupplier(id);
+    console.log(SelectedSupplier);
+  }
+  async puyDebtSupplier() {
+    const id = "";
+    const amount = "";
+    const payment_method = "";
+    const notes = "";
+    if (!id || !amount || !payment_method || !notes) {
+      console.log("نقص في معلومات الدفعة");
+      return;
+    }
+    await Api.puyDebtSupplier(id, amount, payment_method, notes);
+  }
+  async balanceStatusSupplierEvent(id) {
+    await Api.balanceStatusSupplier(id);
+    console.log(balanceStatusSupplier_op);
+  }
+  async deleteSupplierEvent(id) {
+    await Api.deleteSupplier(id);
+  }
+  //---------------------------------------//
+
+
+
+
+
+
+  // ---------/احداث العناصر/-----------
+  async addNewItemEvent() {
+    const name = "itme-1";
+    const company = "co_item-1";
+    const profit_margin = 0.1;
+    const selling_price = 3;
+    const barcode = "7364996254";
+    const expiry_date = "2026-07-29";
+    const quantity = 10;
+
+    if (
+      !name ||
+      !company ||
+      !expiry_date ||
+      !barcode ||
+      profit_margin < 0 ||
+      selling_price < 0 ||
+      quantity < 0
+    ) {
+      console.log(" خطأ في معلومات العنصر ");
+      return;
+    }
+    const wholesale_price = selling_price * quantity;
+    const data = await Api.addNewItem(
+      name,
+      company,
+      wholesale_price,
+      profit_margin,
+      selling_price,
+      barcode,
+      expiry_date,
+      quantity
+    );
+    console.log(data);
+  }
+   async updateItemEvent(){
+    const id=3
+    const name = "item 3";
+    const company = "co_item-3";
+    const profit_margin = 0.1;
+    const selling_price = 3;
+    const barcode = "77877673254";
+    const expiry_date = "2026-07-29";
+    const quantity = 10;
+
+        if (
+      !name ||
+      !company ||
+      !expiry_date ||
+      !barcode ||
+      profit_margin < 0 ||
+      selling_price < 0 ||
+      quantity < 0
+    ) {
+      console.log(" خطأ في معلومات العنصر ");
+      return;
+    }
+      const wholesale_price = selling_price * quantity;
+      const data = await Api.updateOneItem(id,name,company,wholesale_price,profit_margin,selling_price,barcode,expiry_date,quantity)
+      console.log(data)
+
+   }
+  //-------------------------------------//
 }
 class API {
   constructor() {
@@ -166,29 +290,6 @@ class API {
     }
   }
 
-  // حذف مورد
-  async deleteSupplier(id) {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      return { errors: "خطا في التوكن " };
-    }
-    try {
-      const res = await fetch(`${this.B_URL}/suppliers/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        return data.message;
-      }
-      console.log("تم حذف المورد", id);
-    } catch (e) {
-      console.log(e);
-    }
-  }
   // عرض كل الموردين
   async getAllSupplier() {
     const token = localStorage.getItem("token");
@@ -206,9 +307,9 @@ class API {
       const data = await res.json();
       if (!res.ok) {
         console.log(data);
-        return data;
       }
       console.log(data);
+      AllSupplier_arry = data.data;
       return data;
     } catch (e) {
       console.log(e);
@@ -234,7 +335,7 @@ class API {
         return data;
       }
       console.log(data);
-      return data;
+      SelectedSupplier_op = data;
     } catch (e) {
       console.log(e);
     }
@@ -290,7 +391,30 @@ class API {
         return data;
       }
       console.log(data);
-      return data;
+      balanceStatusSupplier_op = data.data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  // حذف مورد
+  async deleteSupplier(id) {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      return { errors: "خطا في التوكن " };
+    }
+    try {
+      const res = await fetch(`${this.B_URL}/suppliers/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        return data.message;
+      }
+      console.log("تم حذف المورد", id);
     } catch (e) {
       console.log(e);
     }
@@ -666,7 +790,7 @@ class API {
         console.log(data);
         return data;
       }
-      console.log( data);
+      console.log(data);
       return data;
     } catch (e) {
       console.log(e);
@@ -718,7 +842,7 @@ class API {
       if (!res.ok) {
         return data;
       }
-      console.log( data);
+      console.log(data);
       return data;
     } catch (e) {
       console.log(e);
@@ -759,12 +883,5 @@ class API {
 
 // ***********************(استدعاء كائنات من الاصناف )**************************//
 
-//   const Events_M_C = new Events();
 const Api = new API();
-
-//  Api.register("y3","y4@gmail.com","12345678","12345678")
-//  Api.login("y4@gmail.com","12345678")
-// Api.addNewSupplier("yahia2", "67677867778");
-// Api.deleteSupplier(6)
-// Api.getAllSupplier();
-// Api.getOneSupplier(2)
+const Events_M_C = new Events();
