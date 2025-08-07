@@ -1,28 +1,40 @@
 // ---/المتغيرات/---
 
 let AllSupplier_arry = [];
-let SelectedSupplier_obj = {};
-let balanceStatusSupplier_obj = {};
 let AllItems_arry = [];
-let SelectedItem_obj = {};
 let Selected_Search_Items_arry = [];
+let All_Buy_Invoices_arry = [];
 let Temp_items_Buy_Invoice = [];
 let Temp_items_single_sell = [];
+
+let SelectedSupplier_obj = {};
+let balanceStatusSupplier_obj = {};
+let SelectedItem_obj = {};
+let Selected_Buy_Invoice_obj = {};
+
+let Temp_total_price_buy_Invoice = 0;
 
 //------------------//
 
 class Events {
   constructor() {
     this.set_event();
-    //  this.getAllSupplierEvent()
+    // this.getAllSupplierEvent();
     // this.getOneSupplierEvent(7)
     // this.balanceStatusSupplierEvent(7)
     // this.addNewItemEvent();
     // this.updateItemEvent()
-    // this.getAllItemsEvent()
+    // this.getAllItemsEvent();
     // this.getOneItemEvent(3)
     // this.searchItemEvent("item 3")
+    // setTimeout(() => {
+    //      this.add_Item_to_temp_items_buy_Invoice()
+    // }, 3000);
+    // this.getBuyInvoiceEvent()
+    // this.getOneBuyInvoiceEvent(1)
   }
+
+  
   //-----/تنفيذ الاحداث /--------
   async set_event() {
     // ----------/ عند الضغط على انشاء الحساب/---------------
@@ -44,6 +56,8 @@ class Events {
     //---------------------------------------------------------//
   }
   //----------------------------//
+
+
 
   // -------- / احداث المصادقة /-------------
   async addUserEvent() {
@@ -91,6 +105,8 @@ class Events {
   }
   // -----------------------------------------//
 
+
+
   // -------- / احداث الموردين /------------
   async addNewSupplierEvent() {
     const name = "";
@@ -128,6 +144,10 @@ class Events {
     await Api.deleteSupplier(id);
   }
   //---------------------------------------//
+
+
+
+
 
   // ---------/احداث العناصر/-----------
   async addNewItemEvent() {
@@ -223,9 +243,119 @@ class Events {
   }
   //-------------------------------------//
 
-  //----------/احداث فواتير الشراء/-------------
 
+
+
+
+  //----------/احداث فواتير الشراء/-------------
+  // ----(دوال اضافة فاتورة شراء جديدة)----
+  add_Item_to_temp_items_buy_Invoice() {
+    const name = "item 3";
+    const company = "co_item-3";
+    const quantity = 20;
+    const barcode = "77877673254";
+    if (!name || !company || quantity < 0) {
+      console.log("خطا في ادخال بيانات العنصر");
+      return;
+    }
+
+    this.handle_trmp_items_arry_Event(name, company, quantity, barcode);
+    console.log(Temp_items_Buy_Invoice);
+  }
+  handle_trmp_items_arry_Event(name, company, quantity, barcode) {
+    let temp_obj = {
+      item_id: 0,
+      quantity: quantity,
+    };
+    if (barcode) {
+      const findeItem = AllItems_arry.find((item) => item.barcode == barcode);
+      if (findeItem) {
+        temp_obj.item_id = findeItem.id;
+        Temp_items_Buy_Invoice.push(temp_obj);
+        Temp_total_price_buy_Invoice += +quantity * +findeItem.selling_price;
+        console.log("تم اضافة هذا العنصر الى العناصر المؤقتة الخاصة بالفاتورة");
+      } else {
+        console.log("العنصر له له سجل بالمخزن");
+      }
+    } else if (name && company) {
+      const findeItem = AllItems_arry.find(
+        (item) => item.name == name && item.company == company
+      );
+      if (findeItem) {
+        temp_obj.item_id = findeItem.id;
+        Temp_items_Buy_Invoice.push(temp_obj);
+        Temp_total_price_buy_Invoice += +quantity * +findeItem.selling_price;
+        console.log("تم اضافة هذا العنصر الى العناصر المؤقتة الخاصة بالفاتورة");
+      } else {
+        console.log("العنصر له له سجل بالمخزن");
+      }
+    } else {
+      console.log("خطا في ادخال بيانات العنصر");
+    }
+  }
+  async addNewBuyInvoiceEvent() {
+    const supplier_name = "yahia2";
+    let supplier_id = 0;
+    const warehouse_owner_name = "ahmad";
+    const total_price = Temp_total_price_buy_Invoice;
+    const payment_status = "partial";
+    const paid_amount = 10;
+    const invoice_date = "2025-07-29";
+    const items = Temp_items_Buy_Invoice;
+
+    if (
+      !supplier_name ||
+      !warehouse_owner_name ||
+      !payment_status ||
+      !paid_amount ||
+      !invoice_date ||
+      !items
+    ) {
+      console.log("خطاء في مدخلات الفاتورة");
+      return;
+    }
+    const findSupplier = AllSupplier_arry.find(
+      (Supplier) => Supplier.name == supplier_name
+    );
+    if (findSupplier) {
+      supplier_id = findSupplier.id;
+    } else {
+      console.log("خطأ في اسم المورد");
+      return;
+    }
+    console.log(items);
+    await Api.addNewBuyInvoice(
+      supplier_id,
+      warehouse_owner_name,
+      total_price,
+      payment_status,
+      paid_amount,
+      invoice_date,
+      items
+    );
+  }
+  //----------------------------------------//
+  async getBuyInvoiceEvent() {
+    await Api.getBuyInvoice();
+    console.log(All_Buy_Invoices_arry);
+  }
+  async getOneBuyInvoiceEvent(id) {
+    await Api.getOneBuyInvoice(id);
+    console.log(Selected_Buy_Invoice_obj);
+  }
+  async deleteBuyInvoiceEvent(id){
+    await Api.deleteBuyInvoice(id)
+  }
   //--------------------------------------------//
+
+
+
+
+
+  //--------/احداث فواتير البيع/---------
+  //-------------------------------------//
+
+
 }
 
 class API {
@@ -521,6 +651,7 @@ class API {
       });
       const data = await res.json();
       if (!res.ok) {
+        console.log(data);
         return data;
       }
       console.log("تمت الاضافة", data);
@@ -549,6 +680,7 @@ class API {
         console.log(data);
         return data;
       }
+      All_Buy_Invoices_arry = data.data;
       console.log(data);
       return data;
     } catch (e) {
@@ -575,6 +707,7 @@ class API {
         return data;
       }
       console.log(data);
+      Selected_Buy_Invoice_obj = data.data;
       return data;
     } catch (e) {
       console.log(e);
@@ -614,7 +747,7 @@ class API {
     buyer_name,
     total_price,
     invoice_date,
-    warehouse_owner_name,
+    warehouse_owner_name = "المالك",
     items
   ) {
     const token = localStorage.getItem("token");
