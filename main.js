@@ -1,57 +1,58 @@
 // ---/المتغيرات/---
 
 let AllSupplier_arry = [];
-let SelectedSupplier_op = {};
-let balanceStatusSupplier_op = {};
+let SelectedSupplier_obj = {};
+let balanceStatusSupplier_obj = {};
 let AllItems_arry = [];
+let SelectedItem_obj = {};
+let Selected_Search_Items_arry = [];
+let Temp_items_Buy_Invoice = [];
+let Temp_items_single_sell = [];
 
 //------------------//
 
 class Events {
   constructor() {
-    this.set_event()
+    this.set_event();
     //  this.getAllSupplierEvent()
     // this.getOneSupplierEvent(7)
     // this.balanceStatusSupplierEvent(7)
     // this.addNewItemEvent();
     // this.updateItemEvent()
     // this.getAllItemsEvent()
+    // this.getOneItemEvent(3)
+    // this.searchItemEvent("item 3")
   }
+  //-----/تنفيذ الاحداث /--------
   async set_event() {
-
     // ----------/ عند الضغط على انشاء الحساب/---------------
-    const create_New_account = document.getElementById("create_New_account")
-    if(create_New_account){
-      create_New_account.onclick =()=>{
-        this.addUserEvent()
-      }
+    const create_New_account = document.getElementById("create_New_account");
+    if (create_New_account) {
+      create_New_account.onclick = () => {
+        this.addUserEvent();
+      };
     }
     //---------------------------------------------------------//
-
-
 
     // -------------/عند الضغط على تسجيل الدخول/---------------
-    const login = document.getElementById("login_but")
-    if(login){
-      login.onclick=()=>{
-        this.loginEvent()
-      }
+    const login = document.getElementById("login_but");
+    if (login) {
+      login.onclick = () => {
+        this.loginEvent();
+      };
     }
     //---------------------------------------------------------//
-
-
-
-
   }
+  //----------------------------//
 
-
-
-  // -------- / احداث المصادقة /------------
+  // -------- / احداث المصادقة /-------------
   async addUserEvent() {
     const name = document.getElementById("New_account_name").value;
     const email = document.getElementById("New_account_email").value;
     const password = document.getElementById("New_account_password").value;
-    const password_confirmation = document.getElementById("New_account_password").value;
+    const password_confirmation = document.getElementById(
+      "New_account_password"
+    ).value;
 
     if (!name || !email || !password || !password_confirmation) {
       console.log("نقص في معلومات المستخدم");
@@ -61,11 +62,16 @@ class Events {
       console.log("خطا في كلمة المرور");
       return;
     }
-   const data = await Api.register(name, email, password, password_confirmation);
-   console.log(data)
-   if (data.message == 'User registered successfully'){
-    window.location.href = "index.html";
-   }
+    const data = await Api.register(
+      name,
+      email,
+      password,
+      password_confirmation
+    );
+    console.log(data);
+    if (data.message == "User registered successfully") {
+      window.location.href = "index.html";
+    }
   }
   async loginEvent() {
     const email = document.getElementById("login_email").value;
@@ -74,21 +80,16 @@ class Events {
       console.log("نقص في معلومات التسجيل");
       return;
     }
-   const data = await Api.login(email,password);
- 
-   if(data.message== "Login successful"){
-     window.location.href = "index.html";
-   }
+    const data = await Api.login(email, password);
+
+    if (data.message == "Login successful") {
+      window.location.href = "index.html";
+    }
   }
   async logoutEvent() {
     await Api.logout();
   }
   // -----------------------------------------//
-
-
-
-
-
 
   // -------- / احداث الموردين /------------
   async addNewSupplierEvent() {
@@ -121,17 +122,12 @@ class Events {
   }
   async balanceStatusSupplierEvent(id) {
     await Api.balanceStatusSupplier(id);
-    console.log(balanceStatusSupplier_op);
+    console.log(balanceStatusSupplier_obj);
   }
   async deleteSupplierEvent(id) {
     await Api.deleteSupplier(id);
   }
   //---------------------------------------//
-
-
-
-
-
 
   // ---------/احداث العناصر/-----------
   async addNewItemEvent() {
@@ -168,8 +164,8 @@ class Events {
     );
     console.log(data);
   }
-   async updateItemEvent(){
-    const id=3
+  async updateItemEvent() {
+    const id = 3;
     const name = "item 3";
     const company = "co_item-3";
     const profit_margin = 0.1;
@@ -178,7 +174,7 @@ class Events {
     const expiry_date = "2026-07-29";
     const quantity = 10;
 
-        if (
+    if (
       !name ||
       !company ||
       !expiry_date ||
@@ -190,19 +186,48 @@ class Events {
       console.log(" خطأ في معلومات العنصر ");
       return;
     }
-      const wholesale_price = selling_price * quantity;
-      const data = await Api.updateOneItem(id,name,company,wholesale_price,profit_margin,selling_price,barcode,expiry_date,quantity)
-      console.log(data)
-
-   }
-   async getAllItemsEvent(){
-    await Api.getAllItems()
-    console.log(AllItems_arry)
-   }
-
-
+    const wholesale_price = selling_price * quantity;
+    const data = await Api.updateOneItem(
+      id,
+      name,
+      company,
+      wholesale_price,
+      profit_margin,
+      selling_price,
+      barcode,
+      expiry_date,
+      quantity
+    );
+    console.log(data);
+  }
+  async getAllItemsEvent() {
+    await Api.getAllItems();
+    console.log(AllItems_arry);
+  }
+  async getOneItemEvent(id) {
+    await Api.getOneItem(id);
+    console.log(SelectedItem_obj);
+  }
+  async searchItemEvent(query) {
+    await Api.searchItem(query);
+    console.log(Selected_Search_Items_arry);
+  }
+  async deleteOneItemEvent(id) {
+    await Api.deleteOneItem(id);
+  }
+  async sellSingleItemsEvent() {
+    const total_price = "";
+    const invoice_date = "";
+    const items = [];
+    await Api.sellSingleItems(total_price, invoice_date, items);
+  }
   //-------------------------------------//
+
+  //----------/احداث فواتير الشراء/-------------
+
+  //--------------------------------------------//
 }
+
 class API {
   constructor() {
     this.B_URL = "http://prog2025.goldyol.com/api";
@@ -376,7 +401,7 @@ class API {
         return data;
       }
       console.log(data);
-      SelectedSupplier_op = data;
+      SelectedSupplier_obj = data;
     } catch (e) {
       console.log(e);
     }
@@ -432,7 +457,7 @@ class API {
         return data;
       }
       console.log(data);
-      balanceStatusSupplier_op = data.data;
+      balanceStatusSupplier_obj = data.data;
     } catch (e) {
       console.log(e);
     }
@@ -762,7 +787,7 @@ class API {
         return data;
       }
       console.log(data);
-      AllItems_arry = data.data
+      AllItems_arry = data.data;
     } catch (e) {
       console.log(e);
     }
@@ -786,8 +811,7 @@ class API {
         console.log(data);
         return data;
       }
-      console.log(data);
-      return data;
+      SelectedItem_obj = data.data;
     } catch (e) {
       console.log(e);
     }
@@ -884,7 +908,7 @@ class API {
         return data;
       }
       console.log(data);
-      return data;
+      Selected_Search_Items_arry = data.data;
     } catch (e) {
       console.log(e);
     }
