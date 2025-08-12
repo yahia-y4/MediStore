@@ -6,13 +6,16 @@ let Selected_Search_Items_arry = [];
 let All_Buy_Invoices_arry = [];
 let Temp_items_Buy_Invoice = [];
 let Temp_items_single_sell = [];
+let Temp_items_sale_Invoice = [];
 
+//----
 let SelectedSupplier_obj = {};
 let balanceStatusSupplier_obj = {};
 let SelectedItem_obj = {};
 let Selected_Buy_Invoice_obj = {};
-
+//----
 let Temp_total_price_buy_Invoice = 0;
+let Temp_total_price_sale_Invoice = 0;
 
 //------------------//
 
@@ -34,7 +37,6 @@ class Events {
     // this.getOneBuyInvoiceEvent(1)
   }
 
-  
   //-----/تنفيذ الاحداث /--------
   async set_event() {
     // ----------/ عند الضغط على انشاء الحساب/---------------
@@ -56,8 +58,6 @@ class Events {
     //---------------------------------------------------------//
   }
   //----------------------------//
-
-
 
   // -------- / احداث المصادقة /-------------
   async addUserEvent() {
@@ -105,8 +105,6 @@ class Events {
   }
   // -----------------------------------------//
 
-
-
   // -------- / احداث الموردين /------------
   async addNewSupplierEvent() {
     const name = "";
@@ -144,10 +142,6 @@ class Events {
     await Api.deleteSupplier(id);
   }
   //---------------------------------------//
-
-
-
-
 
   // ---------/احداث العناصر/-----------
   async addNewItemEvent() {
@@ -242,10 +236,6 @@ class Events {
     await Api.sellSingleItems(total_price, invoice_date, items);
   }
   //-------------------------------------//
-
-
-
-
 
   //----------/احداث فواتير الشراء/-------------
   // ----(دوال اضافة فاتورة شراء جديدة)----
@@ -343,19 +333,68 @@ class Events {
     await Api.getOneBuyInvoice(id);
     console.log(Selected_Buy_Invoice_obj);
   }
-  async deleteBuyInvoiceEvent(id){
-    await Api.deleteBuyInvoice(id)
+  async deleteBuyInvoiceEvent(id) {
+    await Api.deleteBuyInvoice(id);
   }
   //--------------------------------------------//
 
-
-
-
-
   //--------/احداث فواتير البيع/---------
+  //---(دوال اضافة فاتورة بيع جديدة)---
+    add_Item_to_temp_items_sale_Invoice() {
+    const name = "item 3";
+    const company = "co_item-3";
+    const quantity = 20;
+    const barcode = "77877673254";
+    if (!name || !company || quantity < 0) {
+      console.log("خطا في ادخال بيانات العنصر");
+      return;
+    }
+
+    this.handle_trmp_items_sale_arry_Event(name, company, quantity, barcode);
+    console.log(Temp_items_sale_Invoice);
+  }
+    handle_trmp_items_sale_arry_Event(name, company, quantity, barcode) {
+    let temp_obj = {
+      item_id: 0,
+      quantity: quantity,
+      selling_price:0
+    };
+    if (barcode) {
+      const findeItem = AllItems_arry.find((item) => item.barcode == barcode);
+      if (findeItem) {
+        temp_obj.item_id = findeItem.id;
+        temp_obj.selling_price=item.selling_price
+        Temp_items_sale_Invoice.push(temp_obj);
+        Temp_total_price_sale_Invoice += +quantity * +findeItem.selling_price;
+
+        console.log("تم اضافة هذا العنصر الى العناصر المؤقتة الخاصة بالفاتورة");
+      } else {
+        console.log("العنصر له له سجل بالمخزن");
+      }
+    } else if (name && company) {
+      const findeItem = AllItems_arry.find(
+        (item) => item.name == name && item.company == company
+      );
+      if (findeItem) {
+         temp_obj.item_id = findeItem.id;
+        temp_obj.selling_price=item.selling_price
+        Temp_items_sale_Invoice.push(temp_obj);
+        Temp_total_price_sale_Invoice += +quantity * +findeItem.selling_price;
+        console.log("تم اضافة هذا العنصر الى العناصر المؤقتة الخاصة بالفاتورة");
+      } else {
+        console.log("العنصر له له سجل بالمخزن");
+      }
+    } else {
+      console.log("خطا في ادخال بيانات العنصر");
+    }
+  }
+  async addNewSaleInvoiceEvent(){
+    
+  }
+
+  //------------------------------------//
+
   //-------------------------------------//
-
-
 }
 
 class API {
@@ -1077,9 +1116,43 @@ class API {
     }
   }
   //==============================================//
+
+  //===============/الاحصائيات /====================
+  // عرض الاحصائيات الشاملة
+  async getAllStatistics() {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.log("خطا في التوكن");
+      return;
+    }
+    try {
+      const res = await fetch(`${this.B_URL}/statistics`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data);
+      
+      }
+      else{
+         console.log(data);
+      return data; 
+      }
+    
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  //===============================================//
 }
 
 // ***********************(استدعاء كائنات من الاصناف )**************************//
 
 const Api = new API();
 const Events_M_C = new Events();
+Api.getAllStatistics()
