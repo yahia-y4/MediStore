@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>جداول المنتجات</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: #f5f5f5;
+    }
+
+    .table-container {
+      margin: 30px;
+      overflow-x: auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+
+    th {
+      background: #0a1a24;
+      color: white;
+    }
+
+    .pagination {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .pagination button {
+      margin: 0 3px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .pagination button.active {
+      background-color: #0a1a24;
+      color: white;
+    }
+
+    .rows-select {
+      margin-bottom: 10px;
+    }
+
+    .info-table {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      color: #0a1a24;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- جدول جميع المنتجات -->
+  <h2>جميع المنتجات</h2>
+  <div class="info-table">
+      <div>عرض <span id="shownCountAll">0</span> من <span id="totalCountAll">0</span> صفحة</div>
+      <div class="rows-select">
+          <label for="rowsPerPageAll">عدد العناصر في كل صفحة:</label>
+          <select id="rowsPerPageAll">
+              <option value="10" selected>10</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+              <option value="50">50</option>
+              <option value="all">الكل</option>
+          </select>
+      </div>
+  </div>
+  <div class="table-container" id="tableContainerAll">
+      <table id="myTableAll">
+          <thead>
+              <tr>
+                  <th>#</th>
+                  <th>الاسم</th>
+                  <th>الكود</th>
+                  <th>السعر</th>
+                  <th>المتبقي</th>
+                  <th>الحالة</th>
+                  <th class="icon-col"></th>
+              </tr>
+          </thead>
+          <tbody></tbody>
+      </table>
+  </div>
+  <div class="pagination">
+      <div id="paginationPrevAll"></div>
+      <div id="paginationNumbersAll"></div>
+      <div id="paginationNextAll"></div>
+  </div>
+
+  <!-- جدول الأكثر مبيعاً -->
+  <h2>الأكثر مبيعاً</h2>
+  <div class="info-table">
+      <div>عرض <span id="shownCountTop">0</span> من <span id="totalCountTop">0</span> صفحة</div>
+      <div class="rows-select">
+          <label for="rowsPerPageTop">عدد العناصر في كل صفحة:</label>
+          <select id="rowsPerPageTop">
+              <option value="10" selected>10</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+              <option value="50">50</option>
+              <option value="all">الكل</option>
+          </select>
+      </div>
+  </div>
+  <div class="table-container" id="tableContainerTop">
+      <table id="myTableTop">
+          <thead>
+              <tr>
+                  <th>#</th>
+                  <th>الاسم</th>
+                  <th>الكود</th>
+                  <th>السعر</th>
+                  <th>المتبقي</th>
+                  <th>الحالة</th>
+                  <th class="icon-col"></th>
+              </tr>
+          </thead>
+          <tbody></tbody>
+      </table>
+  </div>
+  <div class="pagination">
+      <div id="paginationPrevTop"></div>
+      <div id="paginationNumbersTop"></div>
+      <div id="paginationNextTop"></div>
+  </div>
+
+  <!-- جدول المخزون المنخفض -->
+  <h2>المخزون المنخفض</h2>
+  <div class="info-table">
+      <div>عرض <span id="shownCountLow">0</span> من <span id="totalCountLow">0</span> صفحة</div>
+      <div class="rows-select">
+          <label for="rowsPerPageLow">عدد العناصر في كل صفحة:</label>
+          <select id="rowsPerPageLow">
+              <option value="10" selected>10</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+              <option value="50">50</option>
+              <option value="all">الكل</option>
+          </select>
+      </div>
+  </div>
+  <div class="table-container" id="tableContainerLow">
+      <table id="myTableLow">
+          <thead>
+              <tr>
+                  <th>#</th>
+                  <th>الاسم</th>
+                  <th>الكود</th>
+                  <th>السعر</th>
+                  <th>المتبقي</th>
+                  <th>الحالة</th>
+                  <th class="icon-col"></th>
+              </tr>
+          </thead>
+          <tbody></tbody>
+      </table>
+  </div>
+  <div class="pagination">
+      <div id="paginationPrevLow"></div>
+      <div id="paginationNumbersLow"></div>
+      <div id="paginationNextLow"></div>
+  </div>
+
+<script>
+  // بيانات تجريبية
+  const allProductsData = Array.from({ length: 50 }, (_, i) => ({
+    id: i + 1,
+    name: `منتج ${i+1}`,
+    code: `PRD${(i+1).toString().padStart(3,'0')}`,
+    price: `${(i+1)*2}$`,
+    quantity: Math.floor(Math.random()*100),
+    status: "متوفر"
+  }));
+  const topSellersData = allProductsData.filter((_, i) => i % 2 === 0);
+  const lowStockData = allProductsData.filter(item => item.quantity < 20);
+
+  // دالة لكل جدول مع pagination
+  function initTable(tableId, rowsPerPageId, shownId, totalId, paginationPrevId, paginationNumId, paginationNextId, data) {
+    const table = document.getElementById(tableId);
+    const tbody = table.querySelector("tbody");
+    const rowsSelect = document.getElementById(rowsPerPageId);
+    const shownCount = document.getElementById(shownId);
+    const totalCount = document.getElementById(totalId);
+    const paginationPrev = document.getElementById(paginationPrevId);
+    const paginationNumbers = document.getElementById(paginationNumId);
+    const paginationNext = document.getElementById(paginationNextId);
+
+    let rowsPerPage = parseInt(rowsSelect.value);
+    let currentPage = 1;
+
+    function displayTable(page) {
+      tbody.innerHTML = "";
+      let pageData;
+      if (rowsPerPage === "all") {
+        pageData = data;
+        paginationPrev.innerHTML = paginationNumbers.innerHTML = paginationNext.innerHTML = "";
+        shownCount.textContent = `1 - ${data.length}`;
+        totalCount.textContent = 1;
+      } else {
+        const start = (page-1)*rowsPerPage;
+        const end = Math.min(start+rowsPerPage, data.length);
+        pageData = data.slice(start, end);
+        renderPagination();
+        shownCount.textContent = `${start+1} - ${end}`;
+        totalCount.textContent = Math.ceil(data.length/rowsPerPage);
+      }
+
+      pageData.forEach(item => {
+        const row = `<tr>
+          <td>${item.id}</td>
+          <td>${item.name}</td>
+          <td>${item.code}</td>
+          <td>${item.price}</td>
+          <td>${item.quantity}</td>
+          <td>${item.status}</td>
+          <td class="icon-col">⋮</td>
+        </tr>`;
+        tbody.innerHTML += row;
+      });
+    }
+
+    function renderPagination() {
+      paginationPrev.innerHTML = paginationNumbers.innerHTML = paginationNext.innerHTML = "";
+      const totalPages = Math.ceil(data.length/rowsPerPage);
+      if(totalPages<=1) return;
+
+      const prevBtn = document.createElement("button");
+      prevBtn.textContent = "السابق";
+      prevBtn.disabled = currentPage ===1;
+      prevBtn.onclick = ()=>{currentPage--; displayTable(currentPage);}
+      paginationPrev.appendChild(prevBtn);
+
+      for(let i=1;i<=totalPages;i++){
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        if(i===currentPage) btn.classList.add("active");
+        btn.onclick=()=>{currentPage=i; displayTable(currentPage);}
+        paginationNumbers.appendChild(btn);
+      }
+
+      const nextBtn = document.createElement("button");
+      nextBtn.textContent = "التالي";
+      nextBtn.disabled = currentPage===totalPages;
+      nextBtn.onclick=()=>{currentPage++; displayTable(currentPage);}
+      paginationNext.appendChild(nextBtn);
+    }
+
+    rowsSelect.addEventListener("change",()=>{
+      const val = rowsSelect.value;
+      rowsPerPage = val==="all" ? "all":parseInt(val);
+      currentPage=1;
+      displayTable(currentPage);
+    });
+
+    displayTable(currentPage);
+  }
+
+  // تفعيل كل جدول
+  initTable("myTableAll", "rowsPerPageAll", "shownCountAll", "totalCountAll", "paginationPrevAll", "paginationNumbersAll", "paginationNextAll", allProductsData);
+  initTable("myTableTop", "rowsPerPageTop", "shownCountTop", "totalCountTop", "paginationPrevTop", "paginationNumbersTop", "paginationNextTop", topSellersData);
+  initTable("myTableLow", "rowsPerPageLow", "shownCountLow", "totalCountLow", "paginationPrevLow", "paginationNumbersLow", "paginationNextLow", lowStockData);
+
+</script>
+</body>
+</html>

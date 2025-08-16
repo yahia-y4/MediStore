@@ -1,4 +1,4 @@
-
+// بيانات وهمية
 const data = Array.from({ length: 80 }, (_, i) => ({
     id: i + 1,
     name: `Amoxicillin 500mg`,
@@ -11,103 +11,113 @@ const data = Array.from({ length: 80 }, (_, i) => ({
 let rowsPerPage = 10;
 let currentPage = 1;
 
+// عناصر الصفحة
 const rowsSelect = document.getElementById("rowsPerPage");
 const tableBody = document.querySelector("#myTable tbody");
-const pagination = document.getElementById("paginationControls");
 const tableContainer = document.getElementById("tableContainer");
 const shownCountSpan = document.getElementById("shownCount");
 const totalCountSpan = document.getElementById("totalCount");
 
-totalCountSpan.textContent = Math.ceil(data.length / rowsPerPage);
+const paginationPrev = document.getElementById("paginationPrev");
+const paginationNumbers = document.getElementById("paginationNumbers");
+const paginationNext = document.getElementById("paginationNext");
 
-function displayTable(page) {
+// تعيين إجمالي الصفحات
+function updateTotalCount() {
+    totalCountSpan.textContent = rowsPerPage === "all" ? 1 : Math.ceil(data.length / rowsPerPage);
+}
+
+// عرض الجدول
+function displayTable(page = 1) {
     tableBody.innerHTML = "";
-
     let pageData;
+
     if (rowsPerPage === "all") {
         pageData = data;
-        pagination.innerHTML = "";
-        tableContainer.classList.add("table-scroll");
-        shownCountSpan.textContent = 1 + " - " + data.length;
+        tableContainer.classList.add("table-scroll"); // أضف CSS overflow إذا أحببت
+        shownCountSpan.textContent = `1 - ${data.length}`;
         totalCountSpan.textContent = 1;
+        renderPagination(); // إخفاء أو تعطيل الأزرار
     } else {
         const start = (page - 1) * rowsPerPage;
         const end = Math.min(start + rowsPerPage, data.length);
         pageData = data.slice(start, end);
+        shownCountSpan.textContent = `${start + 1} - ${end}`;
+        updateTotalCount();
         tableContainer.classList.remove("table-scroll");
         renderPagination();
-        shownCountSpan.textContent = (start + 1) + " - " + end;
-        totalCountSpan.textContent = Math.ceil(data.length / rowsPerPage);
     }
 
+    // إضافة الصفوف
+    const fragment = document.createDocumentFragment();
     pageData.forEach(item => {
-        const row = `<tr>
-        <td>${item.id.toString().padStart(2, '0')}</td>
-        <td>${item.name}</td>
-        <td>${item.code}</td>
-        <td>${item.price}</td>
-        <td>${item.quantity}</td>
-        <td>${item.status}</td>
-        <td class="icon-col">⋮</td>
-      </tr>`;
-        tableBody.innerHTML += row;
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>${item.id.toString().padStart(2,'0')}</td>
+            <td>${item.name}</td>
+            <td>${item.code}</td>
+            <td>${item.price}</td>
+            <td>${item.quantity}</td>
+            <td>${item.status}</td>
+            <td class="icon-col">⋮</td>
+        `;
+        fragment.appendChild(tr);
     });
+    tableBody.appendChild(fragment);
 }
 
+// إنشاء أزرار الصفحة
 function renderPagination() {
-    pagination.innerHTML = "";
+    // إفراغ الحاويات
+    paginationPrev.innerHTML = "";
+    paginationNumbers.innerHTML = "";
+    paginationNext.innerHTML = "";
+
+    if (rowsPerPage === "all") return; // لا حاجة لعرض pagination
+
     const totalPages = Math.ceil(data.length / rowsPerPage);
 
-    // زر التالي (بما أن الاتجاه RTL يكون على اليسار)
-    const next = document.createElement("button");
-    next.textContent = "التالي ←";
-    next.classList.add("next");
-    next.disabled = currentPage === totalPages;
-    next.onclick = () => {
-        if (currentPage < totalPages) {
-            currentPage++;
-            displayTable(currentPage);
-        }
-    };
-    pagination.appendChild(next);
-
     // زر السابق
-    const prev = document.createElement("button");
-    prev.textContent = "← السابق";
-    prev.classList.add("prev");
-    prev.disabled = currentPage === 1;
-    prev.onclick = () => {
+    const prevBtn = document.createElement("button");
+    prevBtn.textContent = "← السابق";
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.onclick = () => {
         if (currentPage > 1) {
             currentPage--;
             displayTable(currentPage);
         }
     };
-    pagination.appendChild(prev);
+    paginationPrev.appendChild(prevBtn);
 
-    // أزرار الأرقام تظهر بين التالي والسابق (بسبب RTL سيتم عرضها بالترتيب من اليمين لليسار)
+    // أزرار الأرقام
     let startPage = Math.max(1, currentPage - 2);
     let endPage = Math.min(totalPages, currentPage + 2);
 
     if (startPage > 1) {
         addPageButton(1);
-        if (startPage > 2) {
-            const dots = document.createTextNode("...");
-            pagination.appendChild(dots);
-        }
+        if (startPage > 2) paginationNumbers.appendChild(document.createTextNode(" ... "));
     }
 
-    for (let i = startPage; i <= endPage; i++) {
-        addPageButton(i);
-    }
+    for (let i = startPage; i <= endPage; i++) addPageButton(i);
 
     if (endPage < totalPages) {
-        if (endPage < totalPages - 1) {
-            const dots = document.createTextNode("...");
-            pagination.appendChild(dots);
-        }
+        if (endPage < totalPages - 1) paginationNumbers.appendChild(document.createTextNode(" ... "));
         addPageButton(totalPages);
     }
 
+    // زر التالي
+    const nextBtn = document.createElement("button");
+    nextBtn.textContent = "التالي →";
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.onclick = () => {
+        if (currentPage < totalPages) {
+            currentPage++;
+            displayTable(currentPage);
+        }
+    };
+    paginationNext.appendChild(nextBtn);
+
+    // دالة إضافة زر رقم الصفحة
     function addPageButton(page) {
         const btn = document.createElement("button");
         btn.textContent = page;
@@ -116,10 +126,11 @@ function renderPagination() {
             currentPage = page;
             displayTable(currentPage);
         };
-        pagination.appendChild(btn);
+        paginationNumbers.appendChild(btn);
     }
 }
 
+// تغيير عدد الصفوف في كل صفحة
 rowsSelect.addEventListener("change", () => {
     const val = rowsSelect.value;
     rowsPerPage = val === "all" ? "all" : parseInt(val);
@@ -127,4 +138,5 @@ rowsSelect.addEventListener("change", () => {
     displayTable(currentPage);
 });
 
+// أول عرض للجدول
 displayTable(currentPage);
