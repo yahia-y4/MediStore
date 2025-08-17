@@ -1,12 +1,29 @@
+import { Events_M_C ,AllItems_arry } from "../main.js";
+let data =[]
+console.log("yyy")
 
-const data = Array.from({ length: 80 }, (_, i) => ({
-    id: i + 1,
-    name: `Amoxicillin 500mg`,
-    code: `MED002`,
-    price: `3$`,
-    quantity: 20,
-    status: "متوفر",
-}));
+
+
+
+
+
+
+
+
+
+
+
+// const data = Array.from({ length: 80 }, (_, i) => ({
+//     id: i + 1,
+//     name: `Amoxicillin 500mg`,
+//     code: `MED002`,
+//     price: `3$`,
+//     quantity: 20,
+//     status: "متوفر",
+// }));
+
+
+
 
 let rowsPerPage = 10;
 let currentPage = 1;
@@ -20,34 +37,38 @@ const totalCountSpan = document.getElementById("totalCount");
 
 totalCountSpan.textContent = Math.ceil(data.length / rowsPerPage);
 
-function displayTable(page) {
+async function displayTable(page) {
+    
+    await Events_M_C.getAllItemsEvent()
     tableBody.innerHTML = "";
 
     let pageData;
+ 
     if (rowsPerPage === "all") {
-        pageData = data;
+        pageData = AllItems_arry;
+        console.log(pageData)
         pagination.innerHTML = "";
         tableContainer.classList.add("table-scroll");
         shownCountSpan.textContent = 1 + " - " + data.length;
         totalCountSpan.textContent = 1;
     } else {
         const start = (page - 1) * rowsPerPage;
-        const end = Math.min(start + rowsPerPage, data.length);
-        pageData = data.slice(start, end);
+        const end = Math.min(start + rowsPerPage, AllItems_arry.length);
+        pageData = AllItems_arry.slice(start, end);
         tableContainer.classList.remove("table-scroll");
         renderPagination();
         shownCountSpan.textContent = (start + 1) + " - " + end;
-        totalCountSpan.textContent = Math.ceil(data.length / rowsPerPage);
+        totalCountSpan.textContent = Math.ceil(AllItems_arry.length / rowsPerPage);
     }
 
     pageData.forEach(item => {
         const row = `<tr>
         <td>${item.id.toString().padStart(2, '0')}</td>
         <td>${item.name}</td>
-        <td>${item.code}</td>
-        <td>${item.price}</td>
+        <td>${item.company}</td>
+        <td>${(+item.selling_price) + (+item.profit_margin * (+item.selling_price))}</td>
         <td>${item.quantity}</td>
-        <td>${item.status}</td>
+        <td></td>
         <td class="icon-col">⋮</td>
       </tr>`;
         tableBody.innerHTML += row;
@@ -56,7 +77,7 @@ function displayTable(page) {
 
 function renderPagination() {
     pagination.innerHTML = "";
-    const totalPages = Math.ceil(data.length / rowsPerPage);
+    const totalPages = Math.ceil(AllItems_arry.length / rowsPerPage);
 
     // زر التالي (بما أن الاتجاه RTL يكون على اليسار)
     const next = document.createElement("button");
@@ -127,4 +148,4 @@ rowsSelect.addEventListener("change", () => {
     displayTable(currentPage);
 });
 
-displayTable(currentPage);
+ displayTable(currentPage);

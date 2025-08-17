@@ -3,9 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
+<meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com https://fonts.googleapis.com;
+    font-src https://fonts.gstatic.com;
+    script-src 'self';
+    connect-src 'self' http://prog2025.goldyol.com;
+">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  
     <link rel="stylesheet" href="./css/style.css">
 
     <title>Electron</title>
@@ -834,8 +841,8 @@
             <!-- -----------------------------(E صفحة التخزين)--------------------------- -->
 
 
-            <script src="./js/style.js"></script>
-            <script src="main.js"></script>
+            <!-- <script src="./js/style.js"></script> -->
+            <script type="module"  src="./main.js"></script>
 </body>
 
 </html>
