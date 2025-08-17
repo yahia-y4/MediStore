@@ -1,26 +1,4 @@
 import { Events_M_C ,AllItems_arry } from "../main.js";
-let data =[]
-console.log("yyy")
-
-
-
-
-
-
-
-
-
-
-
-
-// const data = Array.from({ length: 80 }, (_, i) => ({
-//     id: i + 1,
-//     name: `Amoxicillin 500mg`,
-//     code: `MED002`,
-//     price: `3$`,
-//     quantity: 20,
-//     status: "متوفر",
-// }));
 
 
 
