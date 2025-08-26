@@ -28,7 +28,7 @@
                     </svg>
                 </span>
                 <header class="style-main_side_menu">
-                    <a   href="index.html">
+                    <a href="index.html">
                         <div id="Control_panel">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -41,7 +41,7 @@
                         </div>
                     </a>
 
-                    <a   href="Inventory.html">
+                    <a href="Inventory.html">
                         <div id="storage" style="background-color: #0194ff;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -53,7 +53,7 @@
 
                         </div>
                     </a>
-                    <a   href="Statistics .html">
+                    <a href="Statistics .html">
                         <div id="statistics">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -68,7 +68,7 @@
                         </div>
                     </a>
                     <!-- <div id="records"><p>السجلات</p> </div> -->
-                    <a   href="Records .html">
+                    <a href="Records .html">
                         <div id="sessions">
                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"
                                 fill="none">
@@ -80,7 +80,7 @@
 
                         </div>
                     </a>
-                    <a   href="Suppliers .html">
+                    <a href="Suppliers .html">
                         <div id="moridon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -92,7 +92,7 @@
 
                         </div>
                     </a>
-                    <a   href="Customers .html">
+                    <a href="Customers .html">
                         <div id="customers">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" viewBox="0 0 24 23"
                                 fill="none">
@@ -103,7 +103,7 @@
                             <span>الزبائن</span>
                         </div>
                     </a>
-                    <a   href="Notifications.html">
+                    <a href="Notifications.html">
                         <div id="notifications">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -133,7 +133,7 @@
 
                 </header>
                 <div id="profile" class="profile">
-                    <a   href="profile.html">
+                    <a href="profile.html">
 
                         <div id="imge" class="imge_profile">
                             <span>
@@ -153,14 +153,14 @@
 
             <div id="buy_fatora_box" class="create-inv">
                 <div class="conrol">
-                    <a   href="index.html">
+                    <a href="index.html">
                         <div class="conrol-1">لوحة التحكم </div>
                     </a>
-                    <a   href="Inventory.html">
+                    <a href="Inventory.html">
                         <div class="conrol-1">>المخزون</div>
 
                     </a>
-                    <a   href="fatora.html">
+                    <a href="fatora.html">
                         <div class="conrol-1">>أضافة فاتورة</div>
 
                     </a>
@@ -182,6 +182,14 @@
                                 <label for="boss_name">اسم مدير المستودع</label>
                                 <input id="boss_name" type="text" placeholder="اسم مدير المستودع">
                             </div>
+                            <div class="aav">
+                                <label for="payment_status"> حالة الدفع</label>
+                                <input id="payment_status" type="text" placeholder=" حالة الدفع (نقدي أو دين ) ">
+                            </div>
+                            <div class="aav">
+                                <label for="amount_paid">المبلغ المدفوع</label>
+                                <input id="amount_paid" type="text" placeholder="المبلغ المدفوع">
+                            </div>
 
                             <div class="aav">
                                 <label for="amount_paid"> تاريخ الفاتورة</label>
@@ -192,10 +200,50 @@
                         </div>
 
                     </div>
+                    <div class="text">
+                        <h2> المنتجات</h2>
+                    </div>
+                    <div id="products-container">
+                        <div class="info-prodacte">
+                            <div class="prodact-nambr"><span>المنتج رقم:</span> <span class="product-number">1</span>
+                            </div>
+                            <div class="info-prodacte-text">
+                                <div class="aav">
+                                    <label>اسم الدواء</label>
+                                    <input type="text" placeholder="اسم الدواء">
+                                </div>
+                                <div class="aav">
+                                    <label>الشركة المصنعة</label>
+                                    <input type="text" placeholder="الشركة المصنعة">
+                                </div>
+                                <div class="aav">
+                                    <label>كمية</label>
+                                    <input type="text" placeholder="الكمية">
+                                </div>
+
+
+                                <div class="aav">
+                                    <label>مجموع النهائي</label>
+                                    <input type="number" placeholder="مجموع النهائي">
+                                </div>
+                                <div class="aav">
+                                    <label>باركود</label>
+                                    <input type="text" placeholder="باركود">
+                                </div>
+
+                            </div>
+                            <div class="button-prodacte-delete">
+                                <span class="button delete-product">حذف هذا المنتج</span>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="button-prodacte-add">
-                    <a href="add-prodact.html"  >  <span class="button" >إضافة منتج </span></a>
+                        <span class="button" id="add-product">إضافة منتج اخر</span>
                     </div>
+
+
+
 
 
                     <div class="text">
@@ -224,7 +272,9 @@
                         </div>
                         <div class="t1">
                             <div class="add_fatora_button" id="save__fatora_button"> حفظ الفاتورة</div>
-                            <div class="cancel_fatora_button" id="back_buy_fatora_button">رجوع</div>
+                            <a href="Inventory.html">
+                                <div class="cancel_fatora_button" id="back_buy_fatora_button">رجوع</div>
+                            </a>
                         </div>
 
                     </div>
@@ -256,13 +306,18 @@
 
 
                 <div class="t1">
-                 <a href="prodact-adding.html">  <div class="add_fatora_button" id="add_buy_fatora_button">العناصر المضافة</div></a> 
-                    <div class="cancel_fatora_button" id="cancel_buy_fatora_button">ارسال الفاتورة </div>
+                    <a href="prodact-adding.html">
+                        <div class="add_fatora_button" id="add_buy_fatora_button">العناصر المضافة</div>
+                    </a>
+                    <a href="save-favora.html">
+                        <div class="cancel_fatora_button" id="cancel_buy_fatora_button">ارسال الفاتورة </div>
+                    </a>
                 </div>
             </div>
 
             <!-- ............(E اضافة فاتورة شراء )............ -->
         </div>
     </div>
-<script src="main.js"></script>
+    <script src="js/style-fatora.js"></script>
+    <script src="main.js"></script>
 </body>
