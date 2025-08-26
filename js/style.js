@@ -1,86 +1,94 @@
-// بيانات وهمية
-const data = Array.from({ length: 80 }, (_, i) => ({
-    id: i + 1,
-    name: `Amoxicillin 500mg`,
-    code: `MED002`,
-    price: `3$`,
-    quantity: 20,
-    status: "متوفر",
-}));
+// استيراد الأحداث والمصفوفة الرئيسية من ملف main.js
+// Events_M_C: كائن يحتوي على الوظائف المتعلقة بالأحداث (مثل جلب البيانات)
+// AllItems_arry: مصفوفة تحتوي على كل العناصر للعرض في الجدول
+import { Events_M_C, AllItems_arry } from "../main.js";
 
-let rowsPerPage = 10;
-let currentPage = 1;
+// إعداد المتغيرات الأساسية للتحكم في التصفح
+let rowsPerPage = 10; // عدد الصفوف المعروضة في كل صفحة (يمكن تغييره)
+let currentPage = 1; // الصفحة الحالية
 
-// عناصر الصفحة
-const rowsSelect = document.getElementById("rowsPerPage");
-const tableBody = document.querySelector("#myTable tbody");
-const tableContainer = document.getElementById("tableContainer");
-const shownCountSpan = document.getElementById("shownCount");
-const totalCountSpan = document.getElementById("totalCount");
+// الحصول على عناصر DOM من الصفحة
+const rowsSelect = document.getElementById("rowsPerPage"); // قائمة اختيار عدد الصفوف
+const tableBody = document.querySelector("#myTable tbody"); // tbody للجدول لملئه بالبيانات
+const tableContainer = document.getElementById("tableContainer"); // حاوية الجدول (لتحكم بالscroll)
+const shownCountSpan = document.getElementById("shownCount"); // العنصر لعرض عدد الصفوف الظاهرة
+const totalCountSpan = document.getElementById("totalCount"); // العنصر لعرض إجمالي عدد الصفحات
 
-const paginationPrev = document.getElementById("paginationPrev");
-const paginationNumbers = document.getElementById("paginationNumbers");
-const paginationNext = document.getElementById("paginationNext");
+// عناصر التصفح (Pagination)
+const paginationPrev = document.getElementById("paginationPrev"); // زر السابق
+const paginationNumbers = document.getElementById("paginationNumbers"); // أزرار أرقام الصفحات
+const paginationNext = document.getElementById("paginationNext"); // زر التالي
 
-// تعيين إجمالي الصفحات
-function updateTotalCount() {
-    totalCountSpan.textContent = rowsPerPage === "all" ? 1 : Math.ceil(data.length / rowsPerPage);
-}
+// دالة عرض الجدول
+// تقوم بملء الجدول بالصفوف المناسبة للصفحة الحالية
+async function displayTable(page = 1) {
+    // جلب البيانات من خلال الحدث الموجود في Events_M_C
+    await Events_M_C.getAllItemsEvent();
 
-// عرض الجدول
-function displayTable(page = 1) {
+    // تفريغ الجدول قبل ملئه
     tableBody.innerHTML = "";
     let pageData;
 
+    // حالة عرض كل العناصر دفعة واحدة (all)
     if (rowsPerPage === "all") {
-        pageData = data;
-        tableContainer.classList.add("table-scroll"); // أضف CSS overflow إذا أحببت
-        shownCountSpan.textContent = `1 - ${data.length}`;
-        totalCountSpan.textContent = 1;
-        renderPagination(); // إخفاء أو تعطيل الأزرار
+        pageData = AllItems_arry; // استخدام كل العناصر
+        tableContainer.classList.add("table-scroll"); // إضافة scroll عند الحاجة
+        shownCountSpan.textContent = `1 - ${AllItems_arry.length}`; // عرض عدد العناصر
+        totalCountSpan.textContent = 1; // إجمالي الصفحات = 1
+        renderPagination(); // إعادة رسم أزرار التصفح (يمكن إخفاؤها)
     } else {
+        // حساب البداية والنهاية للصفحة الحالية
         const start = (page - 1) * rowsPerPage;
-        const end = Math.min(start + rowsPerPage, data.length);
-        pageData = data.slice(start, end);
-        shownCountSpan.textContent = `${start + 1} - ${end}`;
-        updateTotalCount();
-        tableContainer.classList.remove("table-scroll");
-        renderPagination();
+        const end = Math.min(start + rowsPerPage, AllItems_arry.length);
+        pageData = AllItems_arry.slice(start, end); // أخذ العناصر المناسبة للصفحة
+        tableContainer.classList.remove("table-scroll"); // إزالة scroll إذا كان موجود
+        renderPagination(); // إعادة رسم أزرار التصفح
+        shownCountSpan.textContent = `${start + 1} - ${end}`; // تحديث عرض الصفوف
+        totalCountSpan.textContent = Math.ceil(AllItems_arry.length / rowsPerPage); // إجمالي الصفحات
     }
 
-    // إضافة الصفوف
-    const fragment = document.createDocumentFragment();
-    pageData.forEach(item => {
+    // إنشاء الصفوف وإضافتها للجدول
+    const fragment = document.createDocumentFragment(); // لتحسين الأداء أثناء الإضافة
+    pageData.forEach((item) => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-            <td>${item.id.toString().padStart(2,'0')}</td>
-            <td>${item.name}</td>
-            <td>${item.code}</td>
-            <td>${item.price}</td>
-            <td>${item.quantity}</td>
-            <td>${item.status}</td>
-            <td class="icon-col">⋮</td>
-        `;
-        fragment.appendChild(tr);
+        <td>${item.id
+                .toString()
+                .padStart(2, "0")}</td>          <!-- رقم العنصر مع leading zero -->
+        <td>${item.name
+            }</td>                                   <!-- اسم المنتج -->
+        <td>${item.company ?? "-"
+            }</td>                         <!-- اسم الشركة (أو '-' إذا غير موجود) -->
+      <td>${+item.selling_price + +item.profit_margin * +item.selling_price
+            }</td> <!-- السعر مع هامش الربح -->
+        <td>${item.quantity
+            }</td>                                <!-- الكمية المتوفرة -->
+        <td>${item.status ?? ""
+            }</td>                            <!-- حالة المنتج (متوفر/غير متوفر) -->
+        <td class="icon-col">⋮</td>                              <!-- أيقونة الخيارات -->
+    `;
+        fragment.appendChild(tr); // إضافة الصف للـ fragment
     });
-    tableBody.appendChild(fragment);
+    tableBody.appendChild(fragment); // إضافة كل الصفوف دفعة واحدة للجدول
 }
 
-// إنشاء أزرار الصفحة
+// دالة إنشاء أزرار التصفح (Pagination)
 function renderPagination() {
-    // إفراغ الحاويات
+    // تفريغ الأزرار القديمة
     paginationPrev.innerHTML = "";
     paginationNumbers.innerHTML = "";
     paginationNext.innerHTML = "";
 
-    if (rowsPerPage === "all") return; // لا حاجة لعرض pagination
+    // إذا اخترنا "all" لا حاجة لأزرار التصفح
+    if (rowsPerPage === "all") return;
 
-    const totalPages = Math.ceil(data.length / rowsPerPage);
+    // حساب إجمالي الصفحات
+    const totalPages = Math.ceil(AllItems_arry.length / rowsPerPage);
 
     // زر السابق
     const prevBtn = document.createElement("button");
     prevBtn.textContent = "← السابق";
-    prevBtn.disabled = currentPage === 1;
+    prevBtn.disabled = currentPage === 1; // تعطيله إذا نحن في الصفحة الأولى
     prevBtn.onclick = () => {
         if (currentPage > 1) {
             currentPage--;
@@ -89,26 +97,31 @@ function renderPagination() {
     };
     paginationPrev.appendChild(prevBtn);
 
-    // أزرار الأرقام
+    // تحديد نطاق الأزرار التي ستظهر (مثلاً ±2 حول الصفحة الحالية)
     let startPage = Math.max(1, currentPage - 2);
     let endPage = Math.min(totalPages, currentPage + 2);
 
+    // إضافة أول صفحة وزر "..."
     if (startPage > 1) {
         addPageButton(1);
-        if (startPage > 2) paginationNumbers.appendChild(document.createTextNode(" ... "));
+        if (startPage > 2)
+            paginationNumbers.appendChild(document.createTextNode(" ... "));
     }
 
+    // إضافة الأزرار الرئيسية حول الصفحة الحالية
     for (let i = startPage; i <= endPage; i++) addPageButton(i);
 
+    // إضافة آخر صفحة وزر "..." إذا لم تظهر
     if (endPage < totalPages) {
-        if (endPage < totalPages - 1) paginationNumbers.appendChild(document.createTextNode(" ... "));
+        if (endPage < totalPages - 1)
+            paginationNumbers.appendChild(document.createTextNode(" ... "));
         addPageButton(totalPages);
     }
 
     // زر التالي
     const nextBtn = document.createElement("button");
     nextBtn.textContent = "التالي →";
-    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.disabled = currentPage === totalPages; // تعطيله إذا نحن في الصفحة الأخيرة
     nextBtn.onclick = () => {
         if (currentPage < totalPages) {
             currentPage++;
@@ -117,11 +130,11 @@ function renderPagination() {
     };
     paginationNext.appendChild(nextBtn);
 
-    // دالة إضافة زر رقم الصفحة
+    // دالة مساعدة لإضافة زر رقم الصفحة
     function addPageButton(page) {
         const btn = document.createElement("button");
         btn.textContent = page;
-        if (page === currentPage) btn.classList.add("active");
+        if (page === currentPage) btn.classList.add("active"); // تمييز الصفحة الحالية
         btn.onclick = () => {
             currentPage = page;
             displayTable(currentPage);
@@ -130,13 +143,13 @@ function renderPagination() {
     }
 }
 
-// تغيير عدد الصفوف في كل صفحة
+// تغيير عدد الصفوف في كل صفحة عند اختيار المستخدم
 rowsSelect.addEventListener("change", () => {
     const val = rowsSelect.value;
     rowsPerPage = val === "all" ? "all" : parseInt(val);
-    currentPage = 1;
-    displayTable(currentPage);
+    currentPage = 1; // العودة للصفحة الأولى عند التغيير
+    displayTable(currentPage); // إعادة عرض الجدول
 });
 
-// أول عرض للجدول
+// عرض الجدول لأول مرة عند تحميل الصفحة
 displayTable(currentPage);

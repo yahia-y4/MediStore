@@ -1,7 +1,7 @@
 // ---/المتغيرات/---
 
 let AllSupplier_arry = [];
-let AllItems_arry = [];
+export let  AllItems_arry = [];
 let Selected_Search_Items_arry = [];
 let All_Buy_Invoices_arry = [];
 let Temp_items_Buy_Invoice = [];
@@ -27,7 +27,7 @@ class Events {
     // this.balanceStatusSupplierEvent(7)
     // this.addNewItemEvent();
     // this.updateItemEvent()
-    // this.getAllItemsEvent();
+    this.getAllItemsEvent();
     // this.getOneItemEvent(3)
     // this.searchItemEvent("item 3")
     // setTimeout(() => {
@@ -216,7 +216,7 @@ class Events {
   }
   async getAllItemsEvent() {
     await Api.getAllItems();
-    console.log(AllItems_arry);
+    // console.log(AllItems_arry);
   }
   async getOneItemEvent(id) {
     await Api.getOneItem(id);
@@ -1154,5 +1154,15 @@ class API {
 // ***********************(استدعاء كائنات من الاصناف )**************************//
 
 const Api = new API();
-const Events_M_C = new Events();
-Api.getAllStatistics()
+export const Events_M_C = new Events();
+
+
+
+
+
+
+
+
+
+
+

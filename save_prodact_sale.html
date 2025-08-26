@@ -3,17 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
 
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>الصفحة الاحصائيات</title>
-        <link rel="icon" type="image/png" href="img/4a3452b5-8f8e-4662-8134-b2f5dc5ec278-removebg-preview.png" />
+    <title>الصفحة المخزون</title>
+    <link rel="icon" type="image/png" href="img/4a3452b5-8f8e-4662-8134-b2f5dc5ec278-removebg-preview.png" />
 </head>
+
 <body>
-        <div class="main_page">
+    <div class="main_page">
         <div id="main_side_menu">
             <div class="style-">
                 <span class="title-">
@@ -26,7 +28,7 @@
                     </svg>
                 </span>
                 <header class="style-main_side_menu">
-                    <a   href="index.html">
+                    <a href="index.html">
                         <div id="Control_panel">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -39,7 +41,7 @@
                         </div>
                     </a>
 
-                    <a   href="Inventory.html">
+                    <a href="Inventory.html">
                         <div id="storage" style="background-color: #0194ff;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -51,7 +53,7 @@
 
                         </div>
                     </a>
-                    <a   href="Statistics .html">
+                    <a href="Statistics .html">
                         <div id="statistics">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -66,7 +68,7 @@
                         </div>
                     </a>
                     <!-- <div id="records"><p>السجلات</p> </div> -->
-                    <a   href="Records .html">
+                    <a href="Records .html">
                         <div id="sessions">
                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"
                                 fill="none">
@@ -78,7 +80,7 @@
 
                         </div>
                     </a>
-                    <a     href="/morden/Suppliers .html">
+                    <a href="Suppliers .html">
                         <div id="moridon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -90,7 +92,7 @@
 
                         </div>
                     </a>
-                    <a   href="Customers .html">
+                    <a href="Customers .html">
                         <div id="customers">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" viewBox="0 0 24 23"
                                 fill="none">
@@ -101,7 +103,7 @@
                             <span>الزبائن</span>
                         </div>
                     </a>
-                    <a   href="Notifications.html">
+                    <a href="Notifications.html">
                         <div id="notifications">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -131,7 +133,7 @@
 
                 </header>
                 <div id="profile" class="profile">
-                    <a   href="profile.html">
+                    <a href="profile.html">
 
                         <div id="imge" class="imge_profile">
                             <span>
@@ -146,7 +148,77 @@
             </div>
             </a>
         </div>
-        </div>
-                <script src="main.js"></script>
+        <!-- -----------------------------(E القائمة الجانبية )--------------------------- -->
 
+
+        <div class="left_side_page">
+            <!-- -----------------------------( صفحة عناصر فاتورة البيع )--------------------------- -->
+            <!-- تاكيد فاتورة البيع S   -->
+            <div id="saleInvoice__confirm--active">
+                <div class="conrol">
+                   <a href="index.html"> <div>لوحة التحكم></div></a>
+                   <a href="Inventory.html"> <div>المخزون></div></a>
+                    <div>تأكيد فاتورة بيع</div>
+                </div>
+                <h2 class="title-saleInvoice__confirm"> تمت إضافة فاتورة البيع بنجاح</h2>
+                <div class="title-all">تم تحديث المخزون بالكميات الجديدة للمنتجات التالية</div>
+                <div class="title_saleConfirm--active">تفاصيل المنتجات</div>
+
+                <div class="info-table">
+                    <div>عرض <span id="saleInvoiceShownCount">0</span> من <span id="saleInvoiceTotalCount">0</span> صفحة
+                    </div>
+
+                    <div class="rows-select">
+                        <label for="saleInvoiceRowsPerPage">عدد العناصر في كل صفحة:</label>
+                        <select id="saleInvoiceRowsPerPage">
+                            <option value="10" selected>10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                            <option value="all">الكل</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container" id="saleInvoiceTableContainer">
+                    <table id="saleInvoiceTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>الاسم</th>
+                                <th>الكود</th>
+                                <th>السعر</th>
+                                <th>المتبقي</th>
+                                <th class="icon-col" style="width: 40px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- بيانات الجدول -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <div id="saleInvoicePaginationPrev"></div>
+                    <div id="saleInvoicePaginationNumbers"></div>
+                    <div id="saleInvoicePaginationNext"></div>
+                </div>
+
+                <div class="quick-actions">
+                    <a href="sale-prodact.html"><span class="button" id="saleInvoiceAddMoreBtn"  style="background-color:#634AFF ;color: #fff;" >إضافة كمية أخرى</span></a>
+                    <a href="Inventory.html"><span class="button" id="saleInvoiceReturnBtn" >العودة إلى
+المخزون</span></a>
+                </div>
+
+                <!-- تاكيد فاتورة البيع E   -->
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="js/save_fatora_sale.js"></script>
+    <script src="main.js"></script>
 </body>

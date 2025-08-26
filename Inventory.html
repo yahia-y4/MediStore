@@ -28,7 +28,7 @@
                     </svg>
                 </span>
                 <header class="style-main_side_menu">
-                    <a style="text-decoration: none;" href="Home.html">
+                    <a href="index.html">
                         <div id="Control_panel">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -41,7 +41,7 @@
                         </div>
                     </a>
 
-                    <a style="text-decoration: none;" href="Inventory.html">
+                    <a href="Inventory.html">
                         <div id="storage" style="background-color: #0194ff;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -53,7 +53,7 @@
 
                         </div>
                     </a>
-                    <a style="text-decoration: none;" href="Statistics .html">
+                    <a href="Statistics .html">
                         <div id="statistics">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -68,7 +68,7 @@
                         </div>
                     </a>
                     <!-- <div id="records"><p>السجلات</p> </div> -->
-                    <a style="text-decoration: none;" href="Records .html">
+                    <a href="Records .html">
                         <div id="sessions">
                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"
                                 fill="none">
@@ -80,7 +80,7 @@
 
                         </div>
                     </a>
-                    <a style="text-decoration: none;" href="Suppliers .html">
+                    <a href="Suppliers .html">
                         <div id="moridon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -92,7 +92,7 @@
 
                         </div>
                     </a>
-                    <a style="text-decoration: none;" href="Customers .html">
+                    <a href="Customers .html">
                         <div id="customers">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" viewBox="0 0 24 23"
                                 fill="none">
@@ -103,7 +103,7 @@
                             <span>الزبائن</span>
                         </div>
                     </a>
-                    <a style="text-decoration: none;" href="Notifications.html">
+                    <a href="Notifications.html">
                         <div id="notifications">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -133,7 +133,7 @@
 
                 </header>
                 <div id="profile" class="profile">
-                    <a style="text-decoration: none;" href="profile.html">
+                    <a href="profile.html">
 
                         <div id="imge" class="imge_profile">
                             <span>
@@ -150,13 +150,13 @@
         </div>
         <!-- -----------------------------(E القائمة الجانبية )--------------------------- -->
         <div class="left_side_page">
-            <!-- -----------------------------(S صفحة التحكم)--------------------------- -->
+            <!-- -----------------------------(S صفحة المخزون)--------------------------- -->
             <div id="Control_panel_page">
                 <div class="conrol">
-                    <a style="text-decoration: none;" href="Home.html">
+                    <a href="index.html">
                         <div class="conrol-1">لوحة التحكم </div>
                     </a>
-                    <a style="text-decoration: none;" href="Inventory.html">
+                    <a href="Inventory.html">
                         <div class="conrol-1">>المخزون</div>
                     </a>
                 </div>
@@ -175,16 +175,18 @@
                     <input id="search-item-in-box-inventory" type="search"
                         placeholder="ادخل اسم المنتج ,الكود ,اسم الشركة">
                 </div>
+                <div class="all-proses">
                     <div id="filter-tabs">
-                        <span id="all-products-tab">جميع المنتجات</span>
-                        <span id="low-stock-tab">منخفض في المخزون </span>
-                        <span id="best-sellers-tab">الأكثر مبيعا</span>
+                        <span id="all-products-tab" class="active" data-filter="all">جميع المنتجات</span>
+                        <span id="low-stock-tab" data-filter="low">منخفض في المخزون</span>
+                        <span id="best-sellers-tab" data-filter="best">الأكثر مبيعا</span>
                     </div>
                     <div class="namber-is-prodact">
                         <span>عدد القطع الكلي :</span>
-                        <span id="namber-is-prodact">2534</span>
+                        <span id="totalCount">0</span>
                     </div>
                 </div>
+
                 <div class="title-all">المنتجات المتوفرة</div>
 
                 <div class="info-table">
@@ -210,7 +212,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>الاسم</th>
-                                <th>الكود</th>
+                                <th>اسم الشركة</th>
                                 <th>السعر</th>
                                 <th>المتبقي</th>
                                 <th>الحالة</th>
@@ -219,25 +221,75 @@
                         </thead>
                         <tbody>
                             <!-- بيانات الجدول -->
+                            <span class="more">
+                                <div class="details_buttons">
+                                    <button id="more_btn"> <svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M15.75 13C15.75 12.8011 15.671 12.6103 15.5303 12.4697C15.3897 12.329 15.1989 12.25 15 12.25H9C8.80109 12.25 8.61032 12.329 8.46967 12.4697C8.32902 12.6103 8.25 12.8011 8.25 13C8.25 13.1989 8.32902 13.3897 8.46967 13.5303C8.61032 13.671 8.80109 13.75 9 13.75H15C15.1989 13.75 15.3897 13.671 15.5303 13.5303C15.671 13.3897 15.75 13.1989 15.75 13ZM15.75 17C15.75 16.8011 15.671 16.6103 15.5303 16.4697C15.3897 16.329 15.1989 16.25 15 16.25H9C8.80109 16.25 8.61032 16.329 8.46967 16.4697C8.32902 16.6103 8.25 16.8011 8.25 17C8.25 17.1989 8.32902 17.3897 8.46967 17.5303C8.61032 17.671 8.80109 17.75 9 17.75H15C15.1989 17.75 15.3897 17.671 15.5303 17.5303C15.671 17.3897 15.75 17.1989 15.75 17Z"
+                                                fill="white" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M7 2.25C6.27065 2.25 5.57118 2.53973 5.05546 3.05546C4.53973 3.57118 4.25 4.27065 4.25 5V19C4.25 19.7293 4.53973 20.4288 5.05546 20.9445C5.57118 21.4603 6.27065 21.75 7 21.75H17C17.7293 21.75 18.4288 21.4603 18.9445 20.9445C19.4603 20.4288 19.75 19.7293 19.75 19V7.968C19.75 7.587 19.626 7.217 19.396 6.913L16.398 2.945C16.2349 2.72912 16.0239 2.554 15.7817 2.43341C15.5395 2.31282 15.2726 2.25004 15.002 2.25H7ZM5.75 5C5.75 4.31 6.31 3.75 7 3.75H14.25V8.147C14.25 8.561 14.586 8.897 15 8.897H18.25V19C18.25 19.69 17.69 20.25 17 20.25H7C6.31 20.25 5.75 19.69 5.75 19V5Z"
+                                                fill="white" />
+                                        </svg>التفاصيل</button>
+                                    <button id="edit_btn"> <svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                            height="20" viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M5 19H6.098L16.796 8.30202L15.698 7.20402L5 17.902V19ZM4 20V17.48L17.18 4.28802C17.2833 4.19668 17.3967 4.12602 17.52 4.07602C17.6433 4.02602 17.7723 4.00068 17.907 4.00002C18.0417 3.99935 18.1717 4.02068 18.297 4.06402C18.4237 4.10602 18.5403 4.18201 18.647 4.29201L19.714 5.36602C19.824 5.47202 19.8993 5.58868 19.94 5.71602C19.98 5.84268 20 5.96935 20 6.09602C20 6.23202 19.9773 6.36202 19.932 6.48602C19.886 6.60935 19.8133 6.72235 19.714 6.82502L6.519 20H4ZM16.238 7.76202L15.698 7.20402L16.796 8.30202L16.238 7.76202Z"
+                                                fill="white" />
+                                        </svg>تعديل</button>
+                                    <button id="delete_btn" style="color: red;"> <svg xmlns="http://www.w3.org/2000/svg"
+                                            width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                            <path d="M18 5V19C18 19.5 17.5 20 17 20H12H7C6.5 20 6 19.5 6 19V5"
+                                                stroke="#FF3B3F" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M4 5H20" stroke="#FF3B3F" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M10 4H14M10 9V16M14 9V16" stroke="#FF3B3F" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>حذف</button>
+                                </div>
+                                <div id="details_box" class="details_box">
+                                    <div><span>اسم الدواء :</span> <span id="product_name"></span></div>
+                                    <div><span>الشركة :</span><span id="product_manufacturer"></span></div>
+                                    <div><span>الكمية :</span><span id="product_quantity"></span></div>
+                                    <div><span>السعر :</span><span id="product_price"></span></div>
+                                    <div><span>الصلاحية :</span><span id="product_expiry_date"></span></div>
+                                    <div><span>الكود :</span><span id="product_code"></span></div>
+
+
+                                </div>
+                            </span>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="pagination">
 
-                    <div class="button-table-control" id="paginationPrev"></div>
+                    <div id="paginationPrev"></div>
                     <div id="paginationNumbers"></div>
-                    <div class="button-table-control"  id="paginationNext"></div>
+                    <div id="paginationNext"></div>
                 </div>
 
-                <h2 class="title-Operations">العمليات المتاحة :</h2>
-                <div class="quick-actions">
-                    <a style="text-decoration: none;" href="fatora.html"><span class="button" id="add_new_product_button">  فاتورة شراء </span></a>
-                    <span class="button" id="add_new_product_button"> إضافة منتج </span>
-                    <span class="button" id="quick-sale__process">فاتورة بيع </span>
-                    <span class="button" id="quick-action--audit">جرد المخزون</span>
-                    <span class="button" id="quick-action--report">تقارير المخزون</span>
-                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+            <h2 class="title-Operations">العمليات المتاحة :</h2>
+            <div class="quick-actions">
+                <a href="fatora.html"><span class="button" id="add_new_product_button">
+                        فاتورة شراء </span></a>
+              <a href="add-prodact.html">  <span class="button" id="add_new_product_button"> إضافة منتج </span></a>
+               <a href="sale-prodact.html"> <span class="button" id="quick-sale__process">فاتورة بيع </span></a>
+                <span class="button" id="quick-action--audit">جرد المخزون</span>
+                <span class="button" id="quick-action--report">تقارير المخزون</span>
+            </div>
 
 
 
@@ -296,9 +348,9 @@
                 </div>
 
             </div>
-            </div>
-
         </div>
+
+    </div>
 
     </div>
 
@@ -308,6 +360,6 @@
 
 
 
-    <script src="js/style.js"></script>
+    <script src="js/style-inventory.js"></script>
     <script src="main.js"></script>
 </body>

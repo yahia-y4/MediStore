@@ -3,17 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
 
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>الصفحة الاحصائيات</title>
-        <link rel="icon" type="image/png" href="img/4a3452b5-8f8e-4662-8134-b2f5dc5ec278-removebg-preview.png" />
+    <title>فاتورة شراء </title>
+    <link rel="icon" type="image/png" href="img/4a3452b5-8f8e-4662-8134-b2f5dc5ec278-removebg-preview.png" />
 </head>
+
 <body>
-        <div class="main_page">
+    <div class="main_page">
         <div id="main_side_menu">
             <div class="style-">
                 <span class="title-">
@@ -78,7 +80,7 @@
 
                         </div>
                     </a>
-                    <a     href="/morden/Suppliers .html">
+                    <a   href="Suppliers .html">
                         <div id="moridon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -142,11 +144,105 @@
                             <div id="name_profile">عمر حسين </div>
                             <div id="jop_profile">مدير المستودع </div>
                         </div>
+                           </a>
                 </div>
             </div>
-            </a>
+         
         </div>
-        </div>
-                <script src="main.js"></script>
+        <div class="left_side_page">
+            <!-- ............(S اضافة فاتورة شراء )............ -->
 
+            <div id="buy_fatora_box" class="create-inv">
+                <div class="conrol">
+                    <a   href="index.html">
+                        <div class="conrol-1">لوحة التحكم </div>
+                    </a>
+                    <a   href="Inventory.html">
+                        <div class="conrol-1">>المخزون</div>
+
+                    </a>
+                    <a   href="fatora.html">
+                        <div class="conrol-1">>أضافة فاتورة</div>
+
+                    </a>
+
+                </div>
+
+
+                <h1 class="add-2">إضافة فاتورة الشراء </h1>
+                <div class="countenare-fatora">
+                    <div class="text">
+                        <h2> المنتجات</h2>
+                    </div>
+                    <div id="products-container">
+                        <div class="info-prodacte">
+                            <div class="prodact-nambr"><span>المنتج رقم:</span> <span class="product-number">1</span>
+                            </div>
+                            <div class="info-prodacte-text">
+                                <div class="aav">
+                                    <label>اسم الدواء</label>
+                                    <input type="text" placeholder="اسم الدواء">
+                                </div>
+                                <div class="aav">
+                                    <label>الشركة المصنعة</label>
+                                    <input type="text" placeholder="الشركة المصنعة">
+                                </div>
+                                <div class="aav">
+                                    <label>كمية</label>
+                                    <input type="text" placeholder="الكمية">
+                                </div>
+                                <div class="aav">
+                                    <label>سعر الجملة</label>
+                                    <input type="number" placeholder="سعر الجملة">
+                                </div>
+                                <div class="aav">
+                                    <label>نسبة الربح</label>
+                                    <input type="number" placeholder="نسبة الربح">
+                                </div>
+                                <div class="aav">
+                                    <label>مجموع النهائي</label>
+                                    <input type="number" placeholder="مجموع النهائي">
+                                </div>
+                                <div class="aav">
+                                    <label>باركود</label>
+                                    <input type="text" placeholder="باركود">
+                                </div>
+                                <div class="aav">
+                                    <label>تاريخ انتهاء الصلاحية</label>
+                                    <input type="date" >
+                                </div>
+                            </div>
+                            <div class="button-prodacte-delete">
+                                <span class="button delete-product">حذف هذا المنتج</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-prodacte-add">
+                        <span class="button" id="add-product">إضافة منتج اخر</span>
+                    </div>
+
+
+                    <!-- <div class="Notification">
+                        <h3>رسالة تحذير :</h3>
+                        <p>قم بأدخال الأرقام بالخانات بشكل صحيح </p>
+                        <button>حسناً</button>
+                    </div> -->
+
+
+                    <div class="t1">
+                        <a href="fatora.html"  >
+                            <div class="add_fatora_button" id="save_buy_fatora_button">حفظ</div>
+                        </a>
+
+                        <div class="add_fatora_button" id="add_buy_fatora_button">العناصر المضافة</div>
+                    </div>
+                </div>
+
+                <!-- ............(E اضافة فاتورة شراء )............ -->
+            </div>
+        </div>
+
+        <script src="js/style-fatora.js"></script>
+        <script src="main.js"></script>
 </body>
