@@ -10,7 +10,7 @@
         content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>فاتورة بيع  </title>
+    <title>فاتورة بيع </title>
     <link rel="icon" type="image/png" href="img/4a3452b5-8f8e-4662-8134-b2f5dc5ec278-removebg-preview.png" />
 </head>
 
@@ -180,7 +180,12 @@
                                     <label for="invoice_date_sell">تاريخ الفاتورة</label>
                                     <input id="invoice_date_sell" type="date">
                                 </div>
+                               
                             </div>
+                             <div class="namber-is-prodact">
+                                    <span>  سعر الكلي :</span>
+                                    <span id="totalprice">0</span>
+                                </div>
                             <!-- ............(S اضافة فاتورة بيع )............ -->
                         </div>
 
@@ -206,12 +211,12 @@
                                         <input type="text" placeholder="الكمية">
                                     </div>
                                     <div class="aav">
-                                        <label>سعر الجملة</label>
-                                        <input type="number" placeholder="سعر الجملة">
+                                        <label>سعر المبيع</label>
+                                        <input type="number" placeholder="سعر البيع">
                                     </div>
                                     <div class="aav">
-                                        <label>مجموع النهائي</label>
-                                        <input type="number" placeholder="مجموع النهائي">
+                                        <label> الكمية</label>
+                                        <input type="number" placeholder="الكمية ">
                                     </div>
                                     <div class="aav">
                                         <label>باركود</label>
@@ -226,10 +231,12 @@
 
                         <div class="t1">
                             <div class="button add_fatora_button" id="add-sell-product">إضافة منتج اخر</div>
-                            
-                                <div class="add_fatora_button" id="added_sell_fatora_button">العناصر المضافة</div>
-                            
-                            <a href="Inventory.html"><div class="cancel_fatora_button" id="send_sell_fatora_button">الرجوع</div></a>
+
+                            <div class="add_fatora_button" id="added_sell_fatora_button">العناصر المضافة</div>
+
+                            <a href="Inventory.html">
+                                <div class="cancel_fatora_button" id="send_sell_fatora_button">الرجوع</div>
+                            </a>
                         </div>
                     </div>
 
@@ -243,14 +250,16 @@
                                 <label for="paid-amount-sell">المبلغ المستلم</label>
                                 <input id="paid-amount-sell" type="text" placeholder=" المبلغ المستلم">
                             </div>
-                            <div class="aav">
-                                <label for="balance-due-sell">المبلغ المتبقي</label>
-                                <input id="balance-due-sell" type="text" placeholder="000">
-                            </div>
                         </div>
-                                                <div class="t1">
-                           
-                            <a href="save-favora.html"><div class="cancel_fatora_button" id="send_sell_fatora_button">ارسال فاتورة</div></a>
+                         <div class="namber-is-prodact">
+                                    <span>   المبلغ المتبقي :</span>
+                                    <span id="balance_deu">0</span>
+                                </div>
+                        <div class="t1">
+
+                            <a href="save-favora.html">
+                                <div class="cancel_fatora_button" id="send_sell_fatora_button">ارسال فاتورة</div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -260,18 +269,18 @@
             <div id="prodact_adind">
                 <div id="addedProductsPage">
                     <div class="conrol">
-                        <a  href="index.html">
+                        <a href="index.html">
                             <div class="conrol-1">لوحة التحكم </div>
                         </a>
-                        <a  href="Inventory.html">
+                        <a href="Inventory.html">
                             <div class="conrol-1">> المخزون</div>
                         </a>
-                        <a  href="sale-prodact.html">
-                            <div class="conrol-1">> فاتورة بيع  </div>
+                        <a href="sale-prodact.html">
+                            <div class="conrol-1">> فاتورة بيع </div>
                         </a>
-                        
-                            <div class="conrol-1 active">> العناصر المضافة </div>
-                        
+
+                        <div class="conrol-1 active">> العناصر المضافة </div>
+
                     </div>
 
                     <h3 class="title_serch">البحث عن منتج</h3>
@@ -342,7 +351,7 @@
 
                 <h2 class="title-Operations">العمليات المتاحة :</h2>
                 <div class="quick-actions">
-                    <a  href="sale-prodact.html">
+                    <a href="sale-prodact.html">
                         <span class="button" id="return_fatora_product_button">
                             الرجوع إلى الفاتورة
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
