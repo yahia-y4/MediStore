@@ -74,7 +74,7 @@ function setupPagination() {
 
   // زر السابق
   confirmPaginationPrev.innerHTML =
-    currentPage > 1 ? `<button onclick="changePage(${currentPage - 1})">السابق</button>` : "";
+    currentPage > 1 ? `<button onclick="changePage(${currentPage - 1})">→ السابق</button>` : "";
 
   // الأرقام
   for (let i = 1; i <= pageCount; i++) {
@@ -87,7 +87,7 @@ function setupPagination() {
 
   // زر التالي
   confirmPaginationNext.innerHTML =
-    currentPage < pageCount ? `<button onclick="changePage(${currentPage + 1})">التالي</button>` : "";
+    currentPage < pageCount ? `<button onclick="changePage(${currentPage + 1})">التالي ←</button>` : "";
 }
 
 // =========================

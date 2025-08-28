@@ -10,6 +10,26 @@ let addedProducts = [
   { id: 8, code: "H800", name: "منتج 8", price: 120, stock: 15 },
   { id: 9, code: "I900", name: "منتج 9", price: 75, stock: 6 },
   { id: 10, code: "J1000", name: "منتج 10", price: 300, stock: 1 },
+  { id: 1, code: "A100", name: "منتج 1", price: 100, stock: 20 },
+  { id: 2, code: "B200", name: "منتج 2", price: 150, stock: 5 },
+  { id: 3, code: "C300", name: "منتج 3", price: 200, stock: 0 },
+  { id: 4, code: "D400", name: "منتج 4", price: 80, stock: 30 },
+  { id: 5, code: "E500", name: "منتج 5", price: 50, stock: 12 },
+  { id: 6, code: "F600", name: "منتج 6", price: 400, stock: 2 },
+  { id: 7, code: "G700", name: "منتج 7", price: 90, stock: 0 },
+  { id: 8, code: "H800", name: "منتج 8", price: 120, stock: 15 },
+  { id: 9, code: "I900", name: "منتج 9", price: 75, stock: 6 },
+  { id: 10, code: "J1000", name: "منتج 10", price: 300, stock: 1 },
+  { id: 1, code: "A100", name: "منتج 1", price: 100, stock: 20 },
+  { id: 2, code: "B200", name: "منتج 2", price: 150, stock: 5 },
+  { id: 3, code: "C300", name: "منتج 3", price: 200, stock: 0 },
+  { id: 4, code: "D400", name: "منتج 4", price: 80, stock: 30 },
+  { id: 5, code: "E500", name: "منتج 5", price: 50, stock: 12 },
+  { id: 6, code: "F600", name: "منتج 6", price: 400, stock: 2 },
+  { id: 7, code: "G700", name: "منتج 7", price: 90, stock: 0 },
+  { id: 8, code: "H800", name: "منتج 8", price: 120, stock: 15 },
+  { id: 9, code: "I900", name: "منتج 9", price: 75, stock: 6 },
+  { id: 10, code: "J1000", name: "منتج 10", price: 300, stock: 1 },
 ];
 
 // المتغيرات الأساسية
@@ -80,7 +100,7 @@ function setupPagination() {
   let totalPages = rowsPerPage === "all" ? 1 : Math.ceil(filteredProducts.length / rowsPerPage);
 
   // زر السابق
-  addedPaginationPrev.innerHTML = currentPage > 1 ? `<button >&laquo;</button>` : "";
+  addedPaginationPrev.innerHTML = currentPage > 1 ? `<button >→ السابق</button>` : "";
   if (currentPage > 1) {
     addedPaginationPrev.querySelector("button").addEventListener("click", () => {
       currentPage--;
@@ -101,7 +121,7 @@ function setupPagination() {
   }
 
   // زر التالي
-  addedPaginationNext.innerHTML = currentPage < totalPages ? `<button>&raquo;</button>` : "";
+  addedPaginationNext.innerHTML = currentPage < totalPages ? `<button>التالي ←</button>` : "";
   if (currentPage < totalPages) {
     addedPaginationNext.querySelector("button").addEventListener("click", () => {
       currentPage++;

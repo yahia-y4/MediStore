@@ -87,7 +87,7 @@ function renderPagination() {
 
     // زر السابق
     const prevBtn = document.createElement("button");
-    prevBtn.textContent = "← السابق";
+    prevBtn.textContent = "→ السابق";
     prevBtn.disabled = currentPage === 1; // تعطيله إذا نحن في الصفحة الأولى
     prevBtn.onclick = () => {
         if (currentPage > 1) {
@@ -120,7 +120,7 @@ function renderPagination() {
 
     // زر التالي
     const nextBtn = document.createElement("button");
-    nextBtn.textContent = "التالي →";
+    nextBtn.textContent = "التالي ←";
     nextBtn.disabled = currentPage === totalPages; // تعطيله إذا نحن في الصفحة الأخيرة
     nextBtn.onclick = () => {
         if (currentPage < totalPages) {

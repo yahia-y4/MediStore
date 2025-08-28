@@ -473,6 +473,7 @@ thead th::before {
   color: #0194ff;
   font-weight: 700;
   cursor: pointer;
+  
 
   width: 34px;
   height: 34px;
@@ -506,8 +507,8 @@ thead th::before {
 }
 
 /* زر السابق والي التالي */
-.pagination .prev,
-.pagination .next {
+.pagination button:first-child,
+.pagination button:last-child {
   border-radius: 6px;
   width: auto;
   padding: 6px 16px;
@@ -518,14 +519,14 @@ thead th::before {
   color: #fff;
   transition: background-color 0.3s, color 0.3s;
 }
-.pagination .prev:hover:not(:disabled),
-.pagination .next:hover:not(:disabled) {
+.pagination button:first-child:hover:not(:disabled),
+.pagination  button:last-child:hover:not(:disabled) {
   background-color: #0194ff;
   color: #000f1a;
   cursor: pointer;
 }
-.pagination .prev:disabled,
-.pagination .next:disabled {
+.pagination button:first-child:disabled,
+.pagination  button:last-child:disabled {
   opacity: 0.5;
   cursor: default;
 }
@@ -669,8 +670,7 @@ thead th::before {
 
 
 .details_buttons {
-  width: 150px;
-  height: 200px;
+
   padding: 5px;
    position: absolute;
   border-radius: 20px;
@@ -686,6 +686,7 @@ thead th::before {
   flex-direction: column;
   margin-right: 64%;
   margin-top:10px ;
+  padding: 20px;
 
 }
 .details_buttons button{

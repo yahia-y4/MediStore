@@ -79,8 +79,8 @@ function setupPagination(totalItems) {
     paginationNumbers.appendChild(btn);
   }
 
-  paginationPrev.innerHTML = `<button style ${currentPage === 1 ? "disabled" : ""}>السابق</button>`;
-  paginationNext.innerHTML = `<button ${currentPage === pageCount ? "disabled" : ""}>التالي</button>`;
+  paginationPrev.innerHTML = `<button style ${currentPage === 1 ? "disabled" : ""}>→ السابق</button>`;
+  paginationNext.innerHTML = `<button ${currentPage === pageCount ? "disabled" : ""}> التالي←</button>`;
 
   paginationPrev.querySelector("button").onclick = () => {
     if (currentPage > 1) {

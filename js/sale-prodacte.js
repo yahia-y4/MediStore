@@ -176,8 +176,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // دالة إنشاء التنقل بالصفحات
     function renderPagination(totalItems) {
         paginationNumbers.innerHTML = "";
-        paginationPrev.innerHTML = `<button ${currentPage === 1 ? "disabled" : ""}>السابق</button>`;
-        paginationNext.innerHTML = `<button ${(currentPage * rowsPerPage >= totalItems && rowsPerPage !== "all") ? "disabled" : ""}>التالي</button>`;
+        paginationPrev.innerHTML = `<button ${currentPage === 1 ? "disabled" : ""}>→ السابق</button>`;
+        paginationNext.innerHTML = `<button ${(currentPage * rowsPerPage >= totalItems && rowsPerPage !== "all") ? "disabled" : ""}>التالي ←</button>`;
 
         let totalPages = rowsPerPage === "all" ? 1 : Math.ceil(totalItems / rowsPerPage);
 

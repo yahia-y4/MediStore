@@ -108,7 +108,7 @@ function renderPagination() {
     }
 
     // زر السابق
-    paginationPrev.innerHTML = `<button ${currentPage === 1 ? "disabled" : ""}>السابق</button>`;
+    paginationPrev.innerHTML = `<button ${currentPage === 1 ? "disabled" : ""}>→ السابق</button>`;
     paginationPrev.querySelector("button").addEventListener("click", () => {
         if (currentPage > 1) {
             currentPage--;
@@ -118,7 +118,7 @@ function renderPagination() {
     });
 
     // زر التالي
-    paginationNext.innerHTML = `<button ${currentPage === totalPages ? "disabled" : ""}>التالي</button>`;
+    paginationNext.innerHTML = `<button ${currentPage === totalPages ? "disabled" : ""}>التالي ←</button>`;
     paginationNext.querySelector("button").addEventListener("click", () => {
         if (currentPage < totalPages) {
             currentPage++;
