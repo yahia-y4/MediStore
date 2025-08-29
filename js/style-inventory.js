@@ -55,7 +55,7 @@ function displayTable() {
       <td>${prod.price}$</td>
       <td>${prod.stock}</td>
       <td>${prod.status}</td>
-      <td class="icon-col"><span class="action-icon" style="cursor:pointer;">⋮</span></td>
+      <td class="icon-col"><span class="action-icon" style="cursor:pointer;"></span></td>
     `;
     tableBody.appendChild(row);
   });

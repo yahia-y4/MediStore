@@ -181,23 +181,23 @@
                         <div class="info-prodacte-text">
                             <div class="aav">
                                 <label>اسم الدواء</label>
-                                <input type="text" placeholder="اسم الدواء">
+                                <input type="text" placeholder="اسم الدواء" id="item_name_add">
                             </div>
                             <div class="aav">
                                 <label>الشركة المصنعة</label>
-                                <input type="text" placeholder="الشركة المصنعة">
+                                <input type="text" placeholder="الشركة المصنعة" id="item_co_name_add">
                             </div>
                             <div class="aav">
                                 <label>كمية</label>
-                                <input type="text" placeholder="الكمية">
+                                <input type="text" placeholder="الكمية" id="item_quantity_add">
                             </div>
                             <div class="aav">
                                 <label>سعر الجملة</label>
-                                <input type="number" placeholder="سعر الجملة">
+                                <input type="number" placeholder="سعر الجملة" id="item_price_add">
                             </div>
                             <div class="aav">
                                 <label>نسبة الربح</label>
-                                <input type="number" placeholder="نسبة الربح">
+                                <input type="number" placeholder="نسبة الربح" id="item_profit_margin_add">
                             </div>
                             <div class="aav">
                                 <label>مجموع النهائي</label>
@@ -205,34 +205,35 @@
                             </div>
                             <div class="aav">
                                 <label>باركود</label>
-                                <input type="text" placeholder="باركود">
+                                <input type="text" placeholder="باركود" id="item_barcode_add">
                             </div>
                             <div class="aav">
                                 <label>تاريخ انتهاء الصلاحية</label>
-                                <input type="date">
+                                <input type="date" id="item_expiry_date_add">
                             </div>
                         </div>
                         <div class="button-prodacte-delete">
-                            <span class="button delete-product">حذف هذا المنتج</span>
+                            <!-- <span class="button delete-product">حذف هذا المنتج</span> -->
                         </div>
                     </div>
                 </div>
 
                 <div class="button-prodacte-add">
-                    <span class="button" id="add-product">إضافة منتج اخر</span>
+                    <!-- <span class="button" id="add-product">إضافة منتج اخر</span> -->
                 </div>
 
 
-                <!-- <div class="Notification">
-                        <h3>رسالة تحذير :</h3>
+                <!-- <div class="Notification" id="error_in_add_item_masg">
+                        <h3>رسالة خطأ :</h3>
                         <p>قم بأدخال الأرقام بالخانات بشكل صحيح </p>
-                        <button>حسناً</button>
+                        <button id="ok_add_item_error_masg">حسناً</button>
                     </div> -->
 
 
                 <div class="t1">
                     
-                        <div class="add_fatora_button" id="save_buy_fatora_button">حفظ</div>
+                        <div class="add_fatora_button" id="save_buy_add_item_button">حفظ</div>
+                        <div class="add_fatora_button" id="cancel_buy_add_item_button">الغاء</div>
                     
 
                 </div>

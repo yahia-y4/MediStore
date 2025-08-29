@@ -92,7 +92,7 @@
 
                         </div>
                     </a>
-                 
+
                     <a href="Notifications.html">
                         <div id="notifications">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
@@ -133,10 +133,11 @@
                         <div class="info_profile">
                             <div id="name_profile">عمر حسين </div>
                             <div id="jop_profile">مدير المستودع </div>
-                        </div></a>
+                        </div>
+                    </a>
                 </div>
             </div>
-            
+
         </div>
         <!-- -----------------------------(E القائمة الجانبية )--------------------------- -->
         <div class="left_side_page">
@@ -211,8 +212,8 @@
                         </thead>
                         <tbody>
                             <!-- بيانات الجدول -->
-                            <span class="more">
-                                <div class="details_buttons">
+                            <span class="more" id="more_details">
+                                <div class="details_buttons" id="details_buttons" style="display: none;">
                                     <button id="more_btn"> <svg xmlns="http://www.w3.org/2000/svg" width="20"
                                             height="20" viewBox="0 0 24 24" fill="none">
                                             <path
@@ -221,7 +222,7 @@
                                             <path fill-rule="evenodd" clip-rule="evenodd"
                                                 d="M7 2.25C6.27065 2.25 5.57118 2.53973 5.05546 3.05546C4.53973 3.57118 4.25 4.27065 4.25 5V19C4.25 19.7293 4.53973 20.4288 5.05546 20.9445C5.57118 21.4603 6.27065 21.75 7 21.75H17C17.7293 21.75 18.4288 21.4603 18.9445 20.9445C19.4603 20.4288 19.75 19.7293 19.75 19V7.968C19.75 7.587 19.626 7.217 19.396 6.913L16.398 2.945C16.2349 2.72912 16.0239 2.554 15.7817 2.43341C15.5395 2.31282 15.2726 2.25004 15.002 2.25H7ZM5.75 5C5.75 4.31 6.31 3.75 7 3.75H14.25V8.147C14.25 8.561 14.586 8.897 15 8.897H18.25V19C18.25 19.69 17.69 20.25 17 20.25H7C6.31 20.25 5.75 19.69 5.75 19V5Z"
                                                 fill="white" />
-                                        </svg>التفاصيل</button>
+                                        </svg>التفاصيل </button>
                                     <button id="edit_btn"> <svg xmlns="http://www.w3.org/2000/svg" width="20"
                                             height="20" viewBox="0 0 24 24" fill="none">
                                             <path
@@ -238,14 +239,17 @@
                                             <path d="M10 4H14M10 9V16M14 9V16" stroke="#FF3B3F" stroke-width="1.5"
                                                 stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>حذف</button>
+                                        <button id="x_more_info_but">الغاء</button>
                                 </div>
-                                <div id="details_box" class="details_box">
-                                    <div><span>اسم الدواء :</span> <span id="product_name"></span></div>
-                                    <div><span>الشركة :</span><span id="product_manufacturer"></span></div>
-                                    <div><span>الكمية :</span><span id="product_quantity"></span></div>
-                                    <div><span>السعر :</span><span id="product_price"></span></div>
-                                    <div><span>الصلاحية :</span><span id="product_expiry_date"></span></div>
-                                    <div><span>الكود :</span><span id="product_code"></span></div>
+                                <div id="details_box" class="details_box" style="display: none;">
+                                    <div><span>اسم الدواء :</span> <span id="product_name_info"></span></div>
+                                    <div><span>الشركة :</span><span id="product_manufacturer_info"></span></div>
+                                    <div><span>الكمية :</span><span id="product_quantity_info"></span></div>
+                                    <div><span>سعر الشراء :</span><span id="product_buy_price_info"></span></div>
+                                    <div><span> نسبة الربح :</span><span id="product_profit_price_info"></span></div>
+                                    <div><span>سعر البيع :</span><span id="product_sall_price_info"></span></div>
+                                    <div><span>الصلاحية :</span><span id="product_expiry_date_info"></span></div>
+                                    <div><span>الكود :</span><span id="product_code_info"></span></div>
 
 
                                 </div>
@@ -275,8 +279,8 @@
             <div class="quick-actions">
                 <a href="fatora.html"><span class="button" id="add_new_product_button">
                         فاتورة شراء </span></a>
-              <a href="add-prodact.html">  <span class="button" id="add_new_product_button"> إضافة منتج </span></a>
-               <a href="sale-prodact.html"> <span class="button" id="quick-sale__process">فاتورة بيع </span></a>
+                <a href="add-prodact.html"> <span class="button" id="add_new_product_button"> إضافة منتج </span></a>
+                <a href="sale-prodact.html"> <span class="button" id="quick-sale__process">فاتورة بيع </span></a>
                 <span class="button" id="quick-action--audit">جرد المخزون</span>
                 <span class="button" id="quick-action--report">تقارير المخزون</span>
             </div>

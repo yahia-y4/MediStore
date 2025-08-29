@@ -182,8 +182,8 @@
                             </div>
 
                             <div class="aav">
-                                <label for="amount_paid"> تاريخ الفاتورة</label>
-                                <input id="amount_paid" type="date">
+                                <label for="invoice_date"> تاريخ الفاتورة</label>
+                                <input id="invoice_date" type="date">
                             </div>
 
 
@@ -195,41 +195,68 @@
                     </div>
                     <div id="products-container">
                         <div class="info-prodacte">
-                            <div class="prodact-nambr"><span>المنتج رقم:</span> <span class="product-number">1</span>
+                            <div class="prodact-nambr"><span>معلومات المنتج:</span>
                             </div>
                             <div class="info-prodacte-text">
                                 <div class="aav">
                                     <label>اسم الدواء</label>
-                                    <input type="text" placeholder="اسم الدواء">
+                                    <input type="text" placeholder="اسم الدواء" id="buy_fatora_item_name">
                                 </div>
                                 <div class="aav">
                                     <label>الشركة المصنعة</label>
-                                    <input type="text" placeholder="الشركة المصنعة">
+                                    <input type="text" placeholder="الشركة المصنعة" id="buy_fatora_item_co_name">
                                 </div>
                                 <div class="aav">
                                     <label>كمية</label>
-                                    <input type="text" placeholder="الكمية">
+                                    <input type="text" placeholder="الكمية" id="buy_fatora_item_quantity">
                                 </div>
 
 
                                 <div class="aav">
-                                    <label>مجموع النهائي</label>
-                                    <input type="number" placeholder="مجموع النهائي">
+                                    <label> السعر الكلي</label>
+                                    <input type="number" placeholder=" السعر الكلي" id="buy_fatora_item_total">
                                 </div>
                                 <div class="aav">
                                     <label>باركود</label>
-                                    <input type="text" placeholder="باركود">
+                                    <input type="text" placeholder="باركود" id="buy_fatora_item_barcode">
                                 </div>
 
                             </div>
                             <div class="button-prodacte-delete">
-                                <span class="button delete-product">حذف هذا المنتج</span>
+                                <span id="add_one_item_to_fatora_but" class="button delete-product"> اضافة للفاتورة </span>
                             </div>
+                        </div>
+                        <h3 style="color: white; margin-bottom: 10px;">المنتجات المضافة الى هذه الفاتورة :</h3>
+                        <div class="buy_fatora_items_added_div">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>الاسم</th>
+                                        <th>الشركة</th>
+                                        <th>الكمية</th>
+                                        <th>سعر الشراء</th>
+                                        <th>السعر الكلي</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="buy_fatora_items_added_tbody">
+
+                                    <!-- الصفوف رح تضاف هون -->
+
+                                    <!-- <tr>
+                                        <td>شامبو</td>
+                                        <td>شركة A</td>
+                                        <td>10</td>
+                                        <td>5</td>
+                                        <td>50</td>
+                                    </tr> -->
+                                 
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
                     <div class="button-prodacte-add">
-                        <span class="button" id="add-product">إضافة منتج اخر</span>
+                        <!-- <span class="button" id="add-product">إضافة منتج اخر</span> -->
                     </div>
 
 
@@ -247,19 +274,19 @@
 
                         </div>
                         <div class="aav">
-                            <label for="totale-before-decaunde"> التكلفة قبل الحسم</label>
-                            <input id="totale-before-decaunde" type="number" placeholder="000">
+                            <label for="totale_price_buy_fatora"> السعر الاجمالي للفاتورة</label>
+                            <input id="totale_price_buy_fatora" type="number" placeholder="000">
                         </div>
 
-                        <div class="aav">
+                        <!-- <div class="aav">
                             <label for="discount-amount"> قيمة الحسم</label>
                             <input id="discount-amount" type="number" placeholder="000">
-                        </div>
+                        </div> -->
 
-                        <div class="aav">
+                        <!-- <div class="aav">
                             <label for="final-price"> التكلفة بعد لحسم</label>
                             <input id="final-price" type="number" placeholder="000">
-                        </div>
+                        </div> -->
                         <div class="t1">
                             <div class="add_fatora_button" id="save__fatora_button"> حفظ الفاتورة</div>
                             <a href="Inventory.html">
@@ -270,9 +297,9 @@
                     </div>
 
                 </div>
-                <div class="title-all"> طريقة الدفع</div>
+                <!-- <div class="title-all"> طريقة الدفع</div> -->
 
-                <div class="info-prodacte">
+                <!-- <div class="info-prodacte">
                     <div class="text">
                         <h2> نقدي </h2>
                     </div>
@@ -287,7 +314,7 @@
                         </div>
                     </div>
 
-                </div>
+                </div> -->
                 <!-- <div class="Notification">
                         <h3>رسالة تحذير :</h3>
                         <p>قم بأدخال الأرقام بالخانات بشكل صحيح </p>
@@ -295,19 +322,19 @@
                     </div> -->
 
 
-                <div class="t1">
+                <!-- <div class="t1">
                     <a href="prodact-adding.html">
                         <div class="add_fatora_button" id="add_buy_fatora_button">العناصر المضافة</div>
                     </a>
                     <a href="save-favora.html">
                         <div class="cancel_fatora_button" id="cancel_buy_fatora_button">ارسال الفاتورة </div>
                     </a>
-                </div>
+                </div> -->
             </div>
 
             <!-- ............(E اضافة فاتورة شراء )............ -->
         </div>
     </div>
-    <script src="js/style-fatora.js"></script>
+
     <script src="main.js"></script>
 </body>
