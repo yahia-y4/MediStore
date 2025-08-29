@@ -19,6 +19,7 @@ let Temp_total_price_buy_Invoice = 0;
 let temp_total_quantity_buy_Invoice=0;
 let Temp_total_price_sale_Invoice = 0;
 let selcted_item_id=0;
+let selcted_moarid_id=0;
 
 //------------------//
 
@@ -28,7 +29,7 @@ class Events {
   constructor() {
     this.set_event();
     this.getAllSupplierEvent();
-    // this.getOneSupplierEvent(7)
+    this.getOneSupplierEvent(7)
     // this.balanceStatusSupplierEvent(7)
     // this.addNewItemEvent();
     // this.updateItemEvent()
@@ -139,6 +140,21 @@ class Events {
 
       }
     }
+
+    const delete_item = document.getElementById("delete_btn_item")
+    if(delete_item){
+      delete_item.onclick =()=>{
+         this.deleteOneItemEvent(selcted_item_id)
+        
+      }
+    }
+
+    const update_item = document.getElementById("edit_btn_item")
+    if(update_item){
+      update_item.onclick =()=>{
+        this.click_on_update()
+      }
+    }
   }
   //----------------------------//
 
@@ -230,7 +246,7 @@ show_info_item(id){
   }
   async getOneSupplierEvent(id) {
     await Api.getOneSupplier(id);
-    console.log(SelectedSupplier);
+    console.log(SelectedSupplier_obj);
   }
   async puyDebtSupplier() {
     const id = "";
@@ -249,6 +265,11 @@ show_info_item(id){
   }
   async deleteSupplierEvent(id) {
     await Api.deleteSupplier(id);
+  }
+
+  click_on_moarid(id){
+    selcted_moarid_id = id
+    document.getElementById("details_buttons_moarid").style.display="flex";
   }
   //---------------------------------------//
 
@@ -288,6 +309,12 @@ show_info_item(id){
       quantity
     );
     console.log(data);
+  }
+
+  // ----//تعديل---
+  click_on_update(){
+    sessionStorage.setItem("selected_item_id",selcted_item_id)
+     window.location.href = "edite_item.html";
   }
   async updateItemEvent() {
     const id = 3;
@@ -1223,7 +1250,7 @@ class API {
         return data;
       }
       console.log(data);
-      return data;
+       location.reload();
     } catch (e) {
       console.log(e);
     }
