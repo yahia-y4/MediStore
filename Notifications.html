@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
 
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
@@ -27,7 +28,7 @@
                     </svg>
                 </span>
                 <header class="style-main_side_menu">
-                    <a style="text-decoration: none;" href="index.html">
+                    <a href="index.html">
                         <div id="Control_panel">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -40,8 +41,8 @@
                         </div>
                     </a>
 
-                    <a style="text-decoration: none;" href="Inventory.html">
-                        <div id="storage" style="background-color: #0194ff;">
+                    <a href="Inventory.html">
+                        <div id="storage">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
                                 <path
@@ -52,7 +53,7 @@
 
                         </div>
                     </a>
-                    <a style="text-decoration: none;" href="Statistics .html">
+                    <a href="Statistics .html">
                         <div id="statistics">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -67,7 +68,7 @@
                         </div>
                     </a>
                     <!-- <div id="records"><p>السجلات</p> </div> -->
-                    <a style="text-decoration: none;" href="Records .html">
+                    <a href="Records .html">
                         <div id="sessions">
                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"
                                 fill="none">
@@ -79,7 +80,7 @@
 
                         </div>
                     </a>
-                    <a style="text-decoration: none;" href="Suppliers .html">
+                    <a href="Suppliers .html">
                         <div id="moridon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -91,9 +92,9 @@
 
                         </div>
                     </a>
-                   
-                    <a style="text-decoration: none;" href="Notifications.html">
-                        <div id="notifications">
+
+                    <a href="Notifications.html">
+                        <div id="notifications" style="background-color: #0194ff;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
                                 <path
@@ -122,7 +123,7 @@
 
                 </header>
                 <div id="profile" class="profile">
-                    <a style="text-decoration: none;" href="profile.html">
+                    <a href="profile.html">
 
                         <div id="imge" class="imge_profile">
                             <span>
@@ -133,14 +134,158 @@
                             <div id="name_profile">عمر حسين </div>
                             <div id="jop_profile">مدير المستودع </div>
                         </div>
+                    </a>
                 </div>
             </div>
-            </a>
+
         </div>
-    </div>
+        <div class="left_side_page">
+            <div class="left_side_page">
+                <div class="conrol">
+                    <a href="index.html">
+                        <div class="conrol-1">لوحة التحكم </div>
+                    </a>
+                    <a href="Inventory.html">
+                        <div class="conrol-1">> الاإشعارات</div>
+                    </a>
+
+                </div>
+                <div class="quick-actions">
+
+                    <span class="button" id="quick-action--audit">الكل </span>
+                    <span class="button" id="quick-action--audit"> غير مقروء </span>
+                    <span class="button" id="quick-action--audit">مقروء </span>
+                </div>
+                <div class="notifications">
+                    <div id="notifications-list" class="notifications-list">
+                        <h3 class="title_serch title-notifications">قائمة الإشعارات</h3>
+
+                        <div class="notifications-one">
+                            <div class="info-notifications">
+                                <div class="notifications-one-">
+                                    <span id="stock" class="stock">منخفض في المخزون</span> <span
+                                        class="drug-name">Amoxicillin
+                                        500mg</span>
+                                </div>
+                                <div id="button-notifications" class="button-notifications">غير مقروء</div>
+                            </div>
+                            <div class="stock-time text-notification">
+                                <span class="notif-stock" id="notif-stock">المخزون</span>
+                                <span class="notif-time" id="notif-time">قبل 5 دقائق </span>
+                            </div>
+                        </div>
+                        <div class="notifications-one">
+                            <div class="info-notifications">
+                                <div class="notifications-one-">
+                                    <span id="stock" class="stock">منخفض في المخزون</span> <span
+                                        class="drug-name">Amoxicillin
+                                        500mg</span>
+                                </div>
+                                <div id="button-notifications" class="button-notifications">غير مقروء</div>
+                            </div>
+                            <div class="stock-time text-notification">
+                                <span class="notif-stock" id="notif-stock">المخزون</span>
+                                <span class="notif-time" id="notif-time">قبل 5 دقائق </span>
+                            </div>
+                        </div>
+                        <div class="notifications-one">
+                            <div class="info-notifications">
+                                <div class="notifications-one-">
+                                    <span id="stock" class="stock">منخفض في المخزون</span> <span
+                                        class="drug-name">Amoxicillin
+                                        500mg</span>
+                                </div>
+                                <div id="button-notifications" class="button-notifications">غير مقروء</div>
+                            </div>
+                            <div class="stock-time text-notification">
+                                <span class="notif-stock" id="notif-stock">المخزون</span>
+                                <span class="notif-time" id="notif-time">قبل 5 دقائق </span>
+                            </div>
+                        </div>
 
 
-        <script src="main.js"></script>
+                    </div>
+                    <div id="notification-details" class="notification-details">
+                        <div class="title-notification-details">
+                            <h3 class="title_serch " style="display: flex; align-items: center;"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path
+                                        d="M14 21H10M18 8C18 6.4087 17.3679 4.88258 16.2427 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.8826 2.63214 7.75738 3.75736C6.63216 4.88258 6.00002 6.4087 6.00002 8C6.00002 11.0902 5.22049 13.206 4.34968 14.6054C3.61515 15.7859 3.24788 16.3761 3.26134 16.5408C3.27626 16.7231 3.31488 16.7926 3.46179 16.9016C3.59448 17 4.19261 17 5.38887 17H18.6112C19.8074 17 20.4056 17 20.5382 16.9016C20.6852 16.7926 20.7238 16.7231 20.7387 16.5408C20.7522 16.3761 20.3849 15.7859 19.6504 14.6054C18.7795 13.206 18 11.0902 18 8Z"
+                                        stroke="white" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg> تفاصيل الاشعار</h3>
+                            <div class="number-stock text-notification">
+                                <span class="number-notifications"> الرقم <span
+                                        id="number-notifications">MED002</span></span>
+                                <span class="stock-notifications"
+                                    style="display: flex; flex-direction: row; align-items: center;">
+                                    <div
+                                        style="width: 5px; height: 5px; border-radius: 5px; background-color: #65676B;">
+                                    </div> <span id="stock-notifications">غير مقروء</span>
+                                </span>
+                            </div>
 
-    
+                        </div>
+                        <div class="info-text-notification">
+                            <div class="text-notification-">
+                                <div class="addrese">
+                                    <span>العنوان :</span>
+                                    <span id="stock-notifications-in-info">انخفض مستوى المخزون المنتج </span>
+                                    <span id="name-notifications-in-info">Amoxicillin 500mg </span>
+                                </div>
+                                <div class="addrese">
+                                    <span>الوصف :</span>
+                                    <span id="stock-notifications-in-info">الكمية الحالية <span id="stock-qty">5</span>
+                                        حزمه،أقل من حالة إعادة الطلب(10)،يٌرجى مراجعة المخزون ، وإنشاء امر إذا
+                                        لزم.</span>
+                                </div>
+                            </div>
+                            <div class="info-section">
+                                <div class="addrese">
+                                    <span>الصنف :</span>
+                                    <span id="name-in-info-section">انخفض مستوى المخزون المنتج </span>
+                                </div>
+                                <div class="addrese">
+                                    <span>القسم :</span>
+                                    <span id="category-in-info-section">المخزون</span>
+                                </div>
+                                <div class="addrese">
+                                    <span>الأولوية :</span>
+                                    <span id="priority-in-info-section">عالية</span>
+                                </div>
+                                <div class="addrese">
+                                    <span>أنشئ في :</span>
+                                    <span id="created-at-in-info-section">قبل 5 دقائق</span>
+                                </div>
+                            </div>
+                            <div class="t1" style="margin-top: 30px;">
+                                <div  id="notification-read"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 21 21"
+                                        fill="none">
+                                        <path d="M17.1667 5.5L8.00004 14.6667L3.83337 10.5" stroke="white"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>تحديد كمقروء </div>
+
+                               <a href="fatora.html"> <div id="go-to-fatora"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 21 21"
+                                        fill="none">
+                                        <path
+                                            d="M2.16663 2.1665H3.2551C3.46011 2.1665 3.56262 2.1665 3.64511 2.2042C3.71781 2.23743 3.77941 2.29086 3.82258 2.35813C3.87157 2.43446 3.88607 2.53594 3.91506 2.73889L4.30948 5.49984M4.30948 5.49984L5.18606 11.9427C5.2973 12.7603 5.35292 13.1691 5.54838 13.4768C5.72061 13.7479 5.96753 13.9635 6.25942 14.0976C6.59068 14.2498 7.00325 14.2498 7.82838 14.2498H14.96C15.7454 14.2498 16.1381 14.2498 16.4591 14.1085C16.7421 13.9839 16.9848 13.783 17.1602 13.5284C17.3591 13.2395 17.4326 12.8537 17.5795 12.0821L18.6825 6.29125C18.7343 6.01968 18.7601 5.88389 18.7227 5.77775C18.6898 5.68465 18.6249 5.60624 18.5396 5.55652C18.4423 5.49984 18.3041 5.49984 18.0277 5.49984H4.30948ZM8.83329 17.9998C8.83329 18.4601 8.4602 18.8332 7.99996 18.8332C7.53972 18.8332 7.16663 18.4601 7.16663 17.9998C7.16663 17.5396 7.53972 17.1665 7.99996 17.1665C8.4602 17.1665 8.83329 17.5396 8.83329 17.9998ZM15.5 17.9998C15.5 18.4601 15.1269 18.8332 14.6666 18.8332C14.2064 18.8332 13.8333 18.4601 13.8333 17.9998C13.8333 17.5396 14.2064 17.1665 14.6666 17.1665C15.1269 17.1665 15.5 17.5396 15.5 17.9998Z"
+                                            stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>إنشاء أمر شراء  </div></a>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <script src="main.js"></script>
+
+
 </body>

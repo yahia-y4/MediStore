@@ -3,11 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
 
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style-profile.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>الملف الشخصي </title>
     <link rel="icon" type="image/png" href="img/4a3452b5-8f8e-4662-8134-b2f5dc5ec278-removebg-preview.png" />
@@ -27,8 +29,8 @@
                     </svg>
                 </span>
                 <header class="style-main_side_menu">
-                    <a style="text-decoration: none;" href="index.html">
-                        <div id="Control_panel">
+                    <a href="index.html">
+                        <div id="Control_panel" >
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
                                 <path
@@ -40,8 +42,8 @@
                         </div>
                     </a>
 
-                    <a style="text-decoration: none;" href="Inventory.html">
-                        <div id="storage" style="background-color: #0194ff;">
+                    <a href="Inventory.html">
+                        <div id="storage">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
                                 <path
@@ -52,7 +54,7 @@
 
                         </div>
                     </a>
-                    <a style="text-decoration: none;" href="Statistics .html">
+                    <a href="Statistics .html">
                         <div id="statistics">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -67,7 +69,7 @@
                         </div>
                     </a>
                     <!-- <div id="records"><p>السجلات</p> </div> -->
-                    <a style="text-decoration: none;" href="Records .html">
+                    <a href="Records .html">
                         <div id="sessions">
                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"
                                 fill="none">
@@ -79,7 +81,7 @@
 
                         </div>
                     </a>
-                    <a style="text-decoration: none;" href="Suppliers .html">
+                    <a href="Suppliers .html">
                         <div id="moridon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -91,8 +93,8 @@
 
                         </div>
                     </a>
-                
-                    <a style="text-decoration: none;" href="Notifications.html">
+
+                    <a href="Notifications.html">
                         <div id="notifications">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -121,8 +123,8 @@
                     </div>
 
                 </header>
-                <div id="profile" class="profile">
-                    <a style="text-decoration: none;" href="profile.html">
+                <div id="profile" class="profile"  style="background-color: #0195ff33; padding-top: 5px;">
+                    <a href="profile.html">
 
                         <div id="imge" class="imge_profile">
                             <span>
@@ -133,10 +135,135 @@
                             <div id="name_profile">عمر حسين </div>
                             <div id="jop_profile">مدير المستودع </div>
                         </div>
+                    </a>
                 </div>
             </div>
-            </a>
+
+
+        </div>
+        <div class="left_side_page">
+
+
+            <!-- toast -->
+            <div id="toast" class="toast">تم حفظ التغييرات بنجاح ✅</div>
+
+            <div class="container">
+                <header class="header">
+                    <div class="mini-avatar"><img
+                            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop"
+                            alt="avatar" width="36" height="36"></div>
+                    <h1>الملف الشخصي</h1>
+                </header>
+
+                <section class="card" id="profileCard">
+                    <!-- رأس الملف -->
+                    <div class="profile-head">
+                        <div class="avatar" id="avatarBox">
+                            <img id="avatarImg" alt="صورة المستخدم"
+                                src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=600&auto=format&fit=crop">
+                        </div>
+                        <button class="btn outline" id="openPhotoModal">تغيير الصورة</button>
+                    </div>
+
+                    <!-- وضع العرض -->
+                    <div id="viewMode">
+                        <div class="grid">
+                            <div class="field">
+                                <div class="label">اسم المستخدم</div>
+                                <div class="value" id="v_username">المشرف</div>
+                            </div>
+                            <div class="field">
+                                <div class="label">البريد الإلكتروني</div>
+                                <div class="value" id="v_email">admin@example.com</div>
+                            </div>
+
+                            <div class="field">
+                                <div class="label">الاسم كامل</div>
+                                <div class="value" id="v_fullname">توني أبو روب</div>
+                            </div>
+                            <div class="field">
+                                <div class="label">رقم الهاتف</div>
+                                <div class="value" id="v_phone">+966 50 123 4567</div>
+                            </div>
+
+                            <div class="field">
+                                <div class="label">الدور</div>
+                                <div class="value" id="v_role">مدير النظام</div>
+                            </div>
+                            <div class="field col-2">
+                                <div class="label">العنوان</div>
+                                <div class="value" id="v_address">عزاز - شارع</div>
+                            </div>
+                        </div>
+
+                        <div class="actions">
+                            <button class="btn" id="editBtn">تعديل</button>
+                        </div>
+                    </div>
+
+                    <!-- وضع التعديل -->
+                    <form id="editMode" style="display:none" novalidate>
+                        <div class="grid">
+                            <div class="field">
+                                <label class="label" for="username">اسم المستخدم</label>
+                                <input id="username" name="username" required value="المشرف" />
+                            </div>
+                            <div class="field">
+                                <label class="label" for="email">البريد الإلكتروني</label>
+                                <input id="email" name="email" type="email" required value="admin@example.com" />
+                            </div>
+
+                            <div class="field">
+                                <label class="label" for="fullname">الاسم كامل</label>
+                                <input id="fullname" name="fullname" required value="توني أبو روب" />
+                            </div>
+                            <div class="field">
+                                <label class="label" for="phone">رقم الهاتف</label>
+                                <input id="phone" name="phone" inputmode="tel" placeholder="+966 5x xxx xxxx"
+                                    value="+966 50 123 4567" />
+                            </div>
+
+                            <div class="field">
+                                <label class="label" for="role">الدور</label>
+                                <input id="role" name="role" value="مدير النظام" />
+                            </div>
+                            <div class="field col-2">
+                                <label class="label" for="address">العنوان</label>
+                                <textarea id="address" name="address">عزاز - شارع</textarea>
+                            </div>
+                        </div>
+
+                        <div class="actions">
+                            <button type="button" class="btn ghost" id="cancelEdit">إلغاء</button>
+                            <button type="submit" class="btn success">حفظ التغييرات</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+            <!-- نافذة تغيير الصورة -->
+            <div class="overlay" id="photoOverlay" aria-hidden="true">
+                <div class="modal" role="dialog" aria-modal="true" aria-labelledby="photoTitle">
+                    <h3 id="photoTitle" style="margin-top:0;margin-bottom:8px">تعديل الصورة الشخصية</h3>
+                    <div class="avatar"><img id="modalPreview" alt="معاينة الصورة"></div>
+
+                    <div class="row" style="margin:12px 0 6px">
+                        <label class="btn outline" for="fileInput">رفع صورة جديدة</label>
+                        <input id="fileInput" type="file" accept="image/*" hidden>
+                        <button class="btn danger" id="removePhoto" type="button">إزالة الصورة</button>
+                    </div>
+
+                    <div class="row" style="margin-top:8px">
+                        <button class="btn ghost" id="closeModal" type="button">إلغاء</button>
+                        <button class="btn" id="savePhoto" type="button">حفظ التغييرات</button>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
     </div>
-
+    <script src="js/profile.js"></script>
+<script src="main.js"></script>
 </body>
