@@ -2061,3 +2061,108 @@ function buy_fatora_style() {
       updateProductNumbers();
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// تنسيق صفحة السجلات 
+//==============================
+// JavaScript لإدارة عرض الأقسام
+//==============================
+
+document.addEventListener("DOMContentLoaded", () => {
+    // العناصر الرئيسية
+    const overviewSection = document.getElementById("records-overview");
+    const purchaseSection = document.getElementById("records-purchase");
+    const salesSection = document.getElementById("records-sales");
+
+    // أزرار العرض
+    const btnSales = document.getElementById("btn-sales");
+    const btnPurchase = document.getElementById("btn-purchase");
+
+    // أزرار العودة
+    const btnReturnPurchase = document.getElementById("btn-return-purchase");
+    const btnReturnSales = document.getElementById("btn-return-sales");
+
+    // دالة لإخفاء كل الأقسام
+    function hideAllSections() {
+        overviewSection.style.display = "none";
+        purchaseSection.style.display = "none";
+        salesSection.style.display = "none";
+    }
+
+    // عرض القسم المطلوب فقط
+    function showSection(section) {
+        hideAllSections();
+        section.style.display = "block";
+    }
+
+    //===========================
+    // الإعدادات الافتراضية عند التحميل
+    //===========================
+    showSection(overviewSection); // عرض القسم العام عند البداية
+
+    //===========================
+    // الأحداث
+    //===========================
+
+    // عرض فواتير البيع
+    if (btnSales) {
+        btnSales.addEventListener("click", () => {
+            showSection(salesSection);
+        });
+    }
+
+    // عرض فواتير الشراء
+    if (btnPurchase) {
+        btnPurchase.addEventListener("click", () => {
+            showSection(purchaseSection);
+        });
+    }
+
+    // زر العودة من فواتير الشراء
+    if (btnReturnPurchase) {
+        btnReturnPurchase.addEventListener("click", () => {
+            showSection(overviewSection);
+        });
+    }
+
+    // زر العودة من فواتير البيع
+    if (btnReturnSales) {
+        btnReturnSales.addEventListener("click", () => {
+            showSection(overviewSection);
+        });
+    }
+
+    //===========================
+    // حذف صف من الجدول
+    //===========================
+    const deleteButtons = document.querySelectorAll(".delete-btn");
+    deleteButtons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            const row = e.target.closest("tr");
+            if (row) {
+                // تأكيد قبل الحذف
+                const confirmDelete = confirm("هل تريد حذف هذا السجل؟");
+                if (confirmDelete) {
+                    row.remove();
+                }
+            }
+        });
+    });
+});
+
+//  نهاية تنسيق صفحة السجلات 
+// تنسيق صفحة التقارير 
+
+// نهاية تنسيق التقارير

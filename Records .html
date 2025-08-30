@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
 
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; style-src 'self' 'unsafe-inline' http://prog2025.goldyol.com; connect-src 'self' http://prog2025.goldyol.com;">
@@ -27,7 +28,7 @@
                     </svg>
                 </span>
                 <header class="style-main_side_menu">
-                    <a   href="index.html">
+                    <a href="index.html">
                         <div id="Control_panel">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -40,8 +41,8 @@
                         </div>
                     </a>
 
-                    <a   href="Inventory.html">
-                        <div id="storage" style="background-color: #0194ff;">
+                    <a href="Inventory.html">
+                        <div id="storage">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
                                 <path
@@ -52,7 +53,7 @@
 
                         </div>
                     </a>
-                    <a  href="Statistics .html">
+                    <a href="Statistics .html">
                         <div id="statistics">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -66,9 +67,27 @@
 
                         </div>
                     </a>
+                       <a href="Reports.html">
+                        <div id="Reports">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"
+                                fill="none">
+                                <path
+                                    d="M3 2.5H18C18.2761 2.5 18.5 2.72386 18.5 3V18C18.5 18.2761 18.2761 18.5 18 18H3C2.72386 18.5 2.5 18.2761 2.5 18V3C2.5 2.72386 2.72386 2.5 3 2.5Z"
+                                    stroke="#FAFAFA" fill="none" stroke-width="1.5" />
+                                <path d="M5 5H16" stroke="#FAFAFA" stroke-width="1.5" stroke-linecap="round" />
+                                <path d="M5 8H16" stroke="#FAFAFA" stroke-width="1.5" stroke-linecap="round" />
+                                <path d="M5 11H16" stroke="#FAFAFA" stroke-width="1.5" stroke-linecap="round" />
+                                <path d="M5 14H12" stroke="#FAFAFA" stroke-width="1.5" stroke-linecap="round" />
+                            </svg>
+
+                            <span>تقارير</span>
+
+                        </div>
+                    </a>
+              
                     <!-- <div id="records"><p>السجلات</p> </div> -->
-                    <a  href="Records .html">
-                        <div id="sessions">
+                    <a href="Records .html">
+                        <div id="sessions" style="background-color: #0194ff;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"
                                 fill="none">
                                 <path
@@ -79,7 +98,7 @@
 
                         </div>
                     </a>
-                    <a   href="Suppliers .html">
+                    <a href="Suppliers .html">
                         <div id="moridon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -91,8 +110,9 @@
 
                         </div>
                     </a>
-                 
-                    <a   href="Notifications.html">
+
+
+                    <a href="Notifications.html">
                         <div id="notifications">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                 fill="none">
@@ -122,7 +142,7 @@
 
                 </header>
                 <div id="profile" class="profile">
-                    <a   href="profile.html">
+                    <a href="profile.html">
 
                         <div id="imge" class="imge_profile">
                             <span>
@@ -132,13 +152,277 @@
                         <div class="info_profile">
                             <div id="name_profile">عمر حسين </div>
                             <div id="jop_profile">مدير المستودع </div>
-                        </div>  </a>
+                        </div>
+                    </a>
                 </div>
             </div>
-          
+
         </div>
+        <div class="left_side_page">
+            <div id="records-overview">
+                <div class="conrol">
+                    <a href="index.html">
+                        <div class="conrol-1">لوحة التحكم </div>
+                    </a>
+                    <a href="Records.html">
+                        <div class="conrol-1">> السجلات </div>
+                    </a>
+                </div>
+
+                <div class="stats-card">
+                    <!-- فواتير المبيع -->
+                    <div class="cart">
+                        <span class="icon-cart">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30"
+                                fill="none">
+                                <path
+                                    d="M21.875 13.75H15.625M21.875 18.75H15.625M21.875 8.75H15.625M11.25 3.75L11.25 26.25M9.75 3.75H20.25C22.3502 3.75 23.4003 3.75 24.2025 4.15873C24.9081 4.51825 25.4817 5.09193 25.8413 5.79754C26.25 6.5997 26.25 7.6498 26.25 9.75V20.25C26.25 22.3502 26.25 23.4003 25.8413 24.2025C25.4817 24.9081 24.9081 25.4817 24.2025 25.8413C23.4003 26.25 22.3502 26.25 20.25 26.25H9.75C7.6498 26.25 6.5997 26.25 5.79754 25.8413C5.09193 25.4817 4.51825 24.9081 4.15873 24.2025C3.75 23.4003 3.75 22.3502 3.75 20.25V9.75C3.75 7.6498 3.75 6.5997 4.15873 5.79754C4.51825 5.09193 5.09193 4.51825 5.79754 4.15873C6.5997 3.75 7.6498 3.75 9.75 3.75Z"
+                                    stroke="#0194FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <div class="title-cart">
+                            <h3> فواتير المبيع </h3>
+                            <div class="prodact-nambr">
+                                <span id="sales-count">20</span> <span>فاتورة</span>
+                            </div>
+                            <span class="inf-cart"><span id="sales-days">7</span> أيام</span>
+                        </div>
+                        <div class="bttun-cart" id="btn-sales">عرض</div>
+                    </div>
+
+                    <!-- فواتير الشراء -->
+                    <div class="cart">
+                        <span class="icon-cart">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30"
+                                fill="none">
+                                <path
+                                    d="M21.875 13.75H15.625M21.875 18.75H15.625M21.875 8.75H15.625M11.25 3.75L11.25 26.25M9.75 3.75H20.25C22.3502 3.75 23.4003 3.75 24.2025 4.15873C24.9081 4.51825 25.4817 5.09193 25.8413 5.79754C26.25 6.5997 26.25 7.6498 26.25 9.75V20.25C26.25 22.3502 26.25 23.4003 25.8413 24.2025C25.4817 24.9081 24.9081 25.4817 24.2025 25.8413C23.4003 26.25 22.3502 26.25 20.25 26.25H9.75C7.6498 26.25 6.5997 26.25 5.79754 25.8413C5.09193 25.4817 4.51825 24.9081 4.15873 24.2025C3.75 23.4003 3.75 22.3502 3.75 20.25V9.75C3.75 7.6498 3.75 6.5997 4.15873 5.79754C4.51825 5.09193 5.09193 4.51825 5.79754 4.15873C6.5997 3.75 7.6498 3.75 9.75 3.75Z"
+                                    stroke="#0194FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <div class="title-cart">
+                            <h3> فواتير الشراء </h3>
+                            <div class="prodact-nambr">
+                                <span id="purchase-count">60</span> <span>فاتورة</span>
+                            </div>
+                            <span class="inf-cart"><span id="purchase-days">7</span> أيام</span>
+                        </div>
+                        <div class="bttun-cart" id="btn-purchase">عرض</div>
+                    </div>
+
+                    <!-- الإجمالي -->
+                    <div class="cart">
+                        <span class="icon-cart">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30"
+                                fill="none">
+                                <path
+                                    d="M21.875 13.75H15.625M21.875 18.75H15.625M21.875 8.75H15.625M11.25 3.75L11.25 26.25M9.75 3.75H20.25C22.3502 3.75 23.4003 3.75 24.2025 4.15873C24.9081 4.51825 25.4817 5.09193 25.8413 5.79754C26.25 6.5997 26.25 7.6498 26.25 9.75V20.25C26.25 22.3502 26.25 23.4003 25.8413 24.2025C25.4817 24.9081 24.9081 25.4817 24.2025 25.8413C23.4003 26.25 22.3502 26.25 20.25 26.25H9.75C7.6498 26.25 6.5997 26.25 5.79754 25.8413C5.09193 25.4817 4.51825 24.9081 4.15873 24.2025C3.75 23.4003 3.75 22.3502 3.75 20.25V9.75C3.75 7.6498 3.75 6.5997 4.15873 5.79754C4.51825 5.09193 5.09193 4.51825 5.79754 4.15873C6.5997 3.75 7.6498 3.75 9.75 3.75Z"
+                                    stroke="#0194FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <div class="title-cart">
+                            <h3> الإجمالي </h3>
+                            <div class="prodact-nambr">
+                                <span id="total-count">80</span> <span>فاتورة</span>
+                            </div>
+                            <span class="inf-cart"><span id="total-days">7</span> أيام</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- جدول السجلات العام -->
+                <div class="table-container table-records" id="table-overview-container">
+                    <table id="table-overview" class="table-records">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>اسم</th>
+                                <th>رقم الفاتورة</th>
+                                <th>تاريخ الفاتورة</th>
+                                <th>الحالة</th>
+                                <th class="icon-col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="invoice-overview-1">
+                                <td>1</td>
+                                <td>شركة الهدى</td>
+                                <td>INV-001</td>
+                                <td>2025-08-20</td>
+                                <td>تم التسليم</td>
+                                <td class="icon-col"><span class="delete-btn" title="حذف">🗑️</span></td>
+                            </tr>
+                            <tr id="invoice-overview-1">
+                                <td>1</td>
+                                <td>شركة الهدى</td>
+                                <td>INV-001</td>
+                                <td>2025-08-20</td>
+                                <td>تم التسليم</td>
+                                <td class="icon-col"><span class="delete-btn" title="حذف">🗑️</span></td>
+                            </tr>
+                            <tr id="invoice-overview-1">
+                                <td>1</td>
+                                <td>شركة الهدى</td>
+                                <td>INV-001</td>
+                                <td>2025-08-20</td>
+                                <td>تم التسليم</td>
+                                <td class="icon-col"><span class="delete-btn" title="حذف">🗑️</span></td>
+                            </tr>
+                            <tr id="invoice-overview-1">
+                                <td>1</td>
+                                <td>شركة الهدى</td>
+                                <td>INV-001</td>
+                                <td>2025-08-20</td>
+                                <td>تم التسليم</td>
+                                <td class="icon-col"><span class="delete-btn" title="حذف">🗑️</span></td>
+                            </tr>
+                            <tr id="invoice-overview-1">
+                                <td>1</td>
+                                <td>شركة الهدى</td>
+                                <td>INV-001</td>
+                                <td>2025-08-20</td>
+                                <td>تم التسليم</td>
+                                <td class="icon-col"><span class="delete-btn" title="حذف">🗑️</span></td>
+                            </tr>
+                            <tr id="invoice-overview-1">
+                                <td>1</td>
+                                <td>شركة الهدى</td>
+                                <td>INV-001</td>
+                                <td>2025-08-20</td>
+                                <td>تم التسليم</td>
+                                <td class="icon-col"><span class="delete-btn" title="حذف">🗑️</span></td>
+                            </tr>
+                            <tr id="invoice-overview-1">
+                                <td>1</td>
+                                <td>شركة الهدى</td>
+                                <td>INV-001</td>
+                                <td>2025-08-20</td>
+                                <td> قيد تنفيذ</td>
+                                <td class="icon-col"><span class="delete-btn" title="حذف">🗑️</span></td>
+                            </tr>
+                            <!-- باقي الصفوف بنفس الشكل مع تعديل id لكل صف -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- قسم فواتير الشراء -->
+            <div id="records-purchase">
+                <div class="conrol">
+                    <a href="index.html">
+                        <div class="conrol-1">لوحة التحكم </div>
+                    </a>
+                    <a href="Records.html">
+                        <div class="conrol-1">> السجلات </div>
+                    </a>
+                    <a href="Records.html">
+                        <div class="conrol-1">> فواتير شراء </div>
+                    </a>
+                </div>
+                <div class="title-all">فواتير الشراء</div>
+                <h3 class="title_serch">البحث عن فاتورة</h3>
+                <div class="search_input">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="31" viewBox="0 0 30 31" fill="none">
+                            <path
+                                d="M13.75 24.25C19.2728 24.25 23.75 19.7728 23.75 14.25C23.75 8.72715 19.2728 4.25 13.75 4.25C8.22715 4.25 3.75 8.72715 3.75 14.25C3.75 19.7728 8.22715 24.25 13.75 24.25Z"
+                                stroke="#65676B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M26.25 26.75L20.8125 21.3125" stroke="#65676B" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <input id="search-purchase" type="search" placeholder="ادخل اسم صاحب فاتورة ,رقم ">
+                </div>
+
+                <div class="table-container table-records" id="table-purchase-container">
+                    <table id="table-purchase" class="table-records">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>اسم</th>
+                                <th>رقم الفاتورة</th>
+                                <th>تاريخ الفاتورة</th>
+                                <th>الحالة</th>
+                                <th class="icon-col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="invoice-purchase-1">
+                                <td>1</td>
+                                <td>شركة الهدى</td>
+                                <td>INV-001</td>
+                                <td>2025-08-20</td>
+                                <td>مدفوعة</td>
+                                <td class="icon-col"><span class="delete-btn" title="حذف">🗑️</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="quick-actions">
+                    <span class="button" id="btn-return-purchase">عودة</span>
+                </div>
+            </div>
+
+            <!-- قسم فواتير البيع -->
+            <div id="records-sales">
+                <div class="conrol">
+                    <a href="index.html">
+                        <div class="conrol-1">لوحة التحكم </div>
+                    </a>
+                    <a href="Records.html">
+                        <div class="conrol-1">> السجلات </div>
+                    </a>
+                    <a href="Records.html">
+                        <div class="conrol-1">> فواتير بيع </div>
+                    </a>
+                </div>
+                <div class="title-all">فواتير البيع</div>
+                <h3 class="title_serch">البحث عن فاتورة</h3>
+                <div class="search_input">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="31" viewBox="0 0 30 31" fill="none">
+                            <path
+                                d="M13.75 24.25C19.2728 24.25 23.75 19.7728 23.75 14.25C23.75 8.72715 19.2728 4.25 13.75 4.25C8.22715 4.25 3.75 8.72715 3.75 14.25C3.75 19.7728 8.22715 24.25 13.75 24.25Z"
+                                stroke="#65676B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M26.25 26.75L20.8125 21.3125" stroke="#65676B" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    <input id="search-sales" type="search" placeholder="ادخل اسم صاحب فاتورة ,رقم ">
+                </div>
+
+                <div class="table-container table-records" id="table-sales-container">
+                    <table id="table-sales" class="table-records">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>اسم</th>
+                                <th>رقم الفاتورة</th>
+                                <th>تاريخ الفاتورة</th>
+                                <th>الحالة</th>
+                                <th class="icon-col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="invoice-sales-1">
+                                <td>1</td>
+                                <td>شركة الهدى</td>
+                                <td>INV-001</td>
+                                <td>2025-08-20</td>
+                                <td>مدفوعة</td>
+                                <td class="icon-col"><span class="delete-btn" title="حذف">🗑️</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="quick-actions">
+                    <span class="button" id="btn-return-sales">عودة</span>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-            <script src="main.js"></script>
+    <script src="main.js"></script>
 
 </body>
